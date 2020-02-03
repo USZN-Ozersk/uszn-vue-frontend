@@ -17,7 +17,7 @@
                 </template>
                 <v-list class="pa-0">
                   <v-list-item-group>
-                    <v-list-item v-for="submenu in getSubMenu(menu.id)" :key="submenu.id" router-link to="/">
+                    <v-list-item v-for="submenu in getSubMenu(menu.id)" :key="submenu.id" router-link :to="{ name: 'page', params: { id: submenu.id }}">
                       <v-list-item-content>
                         <v-list-item-title>{{ submenu.name }}</v-list-item-title>
                       </v-list-item-content>  

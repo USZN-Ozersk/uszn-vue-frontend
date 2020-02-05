@@ -1,36 +1,36 @@
 <template>
-  <v-container fluid grid-list-md>
-    <!-- первая строка блоков - информация об управлении -->
-    <v-layout row wrap v-if="!getBadVision">
-      <v-flex xs12 md10 lg8 offset-xs0 offset-md0 offset-lg1>
+  <v-container>
+  <!-- первая строка блоков - информация об управлении -->
+    <v-row no-gutters justify="center" v-if="!getBadVision">
+      <v-col lg="8" md="10" sm="12">
         <topInfo></topInfo>
-      </v-flex>
-      <v-flex xs12 md2>
+      </v-col>
+      <v-col lg="2" md="2" sm="12">
         <topPhones v-if="!getBadVision"></topPhones>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
     <!-- Информация об управлении для людей с плохим зрением -->
-    <v-layout row wrap justify-center v-if="getBadVision">
-      <v-flex xs12 md10 lg8 offset-xs0 offset-md0 offset-lg0>
+    <v-row no-gutters justify="center" v-if="getBadVision">
+      <v-col sm="12">
         <topInfoBV></topInfoBV>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
 
     <!-- Вторая строка блоков - Новости и руководитель -->
-    <v-layout row wrap v-if="!getBadVision">
-      <v-flex xs12 md10 lg8 offset-xs0 offset-md0 offset-lg1>
+    <v-row no-gutters justify="center" v-if="!getBadVision">
+      <v-col lg="8" md="10" sm="12">
         <topNews></topNews>    
-      </v-flex>
-      <v-flex xs12 md2>
+      </v-col>
+      <v-col lg="2" md="2" sm="12">
       <topBoss></topBoss>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
     <!-- Новости людей с плохим зрением -->
-    <v-layout row wrap v-if="getBadVision">
-      <v-flex xs12 md10 lg8 offset-xs0 offset-md0 offset-lg2>
+    <v-row no-gutters justify="center" v-if="getBadVision">
+      <v-col>
         <topNewsBV></topNewsBV>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -47,7 +47,7 @@ components: {
   topBoss: () => import('@/components/mainPage/topBoss'), // Инфо о начальнике
 },
 computed: {
-  ...mapGetters(['getBadVision']),
+  ...mapGetters(['getBadVision', 'getBvParams']),
 }
 
   

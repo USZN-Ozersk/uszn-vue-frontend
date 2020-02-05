@@ -6,7 +6,7 @@
   <v-toolbar-title>УСЗН Озерск</v-toolbar-title>
   <v-spacer></v-spacer>
     
-      <v-btn class="hidden-lg-and-up" flat icon @click="setDrawer(true)">
+      <v-btn class="hidden-lg-and-up" icon @click="setDrawer(true)">
         <v-icon>fas fa-bars</v-icon>
       </v-btn>
     
@@ -27,7 +27,7 @@
             </v-menu>
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
-                <v-btn class="hidden-md-and-down" flat icon v-on="on" color="indigo" @click="setBadVision(true)" dark>
+                <v-btn class="hidden-md-and-down" icon v-on="on" color="indigo" @click="setBadVision(true)" dark>
                   <v-icon light>fas fa-low-vision</v-icon>
                 </v-btn>
               </template>

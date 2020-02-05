@@ -4,7 +4,7 @@
         
             <v-spacer></v-spacer>
             <div class="hidden-md-and-down">
-            <v-btn flat outlined @click="setBvParams({param: 'bvImages', value: !getBvParams.bvImages})">
+            <v-btn outlined @click="setBvParams({param: 'bvImages', value: !getBvParams.bvImages})">
                 <span class="caption font-weight-medium" v-if="getBvParams.bvImages">Скрыть изображения</span>
                 <span class="caption font-weight-medium" v-if="!getBvParams.bvImages">Показать изображения</span>
             </v-btn>
@@ -19,16 +19,16 @@
                 <span class="subheading font-weight-medium button-toggle-width black--text">A</span>
             </v-btn>
                 <span>Размер шрифта:</span>
-            <v-btn flat outlined @click="setBvParams({param: 'bvFont', value: 'small'})">
+            <v-btn outlined @click="setBvParams({param: 'bvFont', value: 'small'})">
                 <span class="body-2">A</span>
             </v-btn>
-            <v-btn flat outlined @click="setBvParams({param: 'bvFont', value: 'medium'})">
+            <v-btn outlined @click="setBvParams({param: 'bvFont', value: 'medium'})">
                 <span class="subheading">A</span>
             </v-btn>
-            <v-btn flat outlined @click="setBvParams({param: 'bvFont', value: 'large'})">
+            <v-btn outlined @click="setBvParams({param: 'bvFont', value: 'large'})">
                 <span class="title">A</span>
             </v-btn>
-            <v-btn flat outlined @click="setBadVision(false)"><span class="caption font-weight-medium">Обычная версия</span></v-btn>
+            <v-btn outlined @click="setBadVision(false)"><span class="caption font-weight-medium">Обычная версия</span></v-btn>
             </div>
             <v-spacer></v-spacer>
             
@@ -37,7 +37,7 @@
         <!-- Слот расширения -->
         <v-spacer slot="extension"></v-spacer>
         <v-toolbar-items slot="extension" class="hidden-md-and-down">
-            <v-btn class="ml-1" outlined flat v-for="menu in getMainMenu" :key="menu.id">
+            <v-btn class="ml-1" outlined v-for="menu in getMainMenu" :key="menu.id">
                 <span v-bind:class="{'caption font-weight-medium' : getBvParams.bvFont == 'small', 'body-2' : getBvParams.bvFont == 'medium', 'subheading font-weight-medium' : getBvParams.bvFont == 'large'}">{{ menu.name }}</span>
             </v-btn>
         </v-toolbar-items>

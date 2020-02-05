@@ -7,11 +7,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // Вкл\Выкл режим адаптированный для слабовидящих
-    isBadVision: true,
+    isBadVision: false,
     //Параметры режима для слабовидящих
     bvParams: {
       bvFont: "medium", //Размер шрифта small, medium, large
-      bvBackground: "white", //Цвет фона white, black, blue
+      bvBackground: "white", //Цвет фона white, black, blue accent-1
+      bvText: "black--text", //Цвет текста black--text, white--text
+      bvColor: "black", //Цвет кнопок и пр. black, white
       bvImages: true //Вкл\Выкл изображения
       },
     fullMenu: [], // Массив элементов основного меню

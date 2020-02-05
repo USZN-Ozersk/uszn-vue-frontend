@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
   <!-- первая строка блоков - информация об управлении -->
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col lg="8" md="10" sm="12">
@@ -27,7 +27,7 @@
     </v-row>
     <!-- Новости людей с плохим зрением -->
     <v-row no-gutters justify="center" v-if="getBadVision">
-      <v-col>
+      <v-col sm="12">
         <topNewsBV></topNewsBV>
       </v-col>
     </v-row>

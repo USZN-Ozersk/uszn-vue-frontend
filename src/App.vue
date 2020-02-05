@@ -3,7 +3,7 @@
     <drawer></drawer>
     <mainToolBar v-if="!getBadVision"></mainToolBar>
     <mainToolBarBadVision v-if="getBadVision"></mainToolBarBadVision>
-    <v-content>
+    <v-content v-bind:class="[getBvParams.bvBackground, getBvParams.bvText]">
       <router-view></router-view>
     </v-content>
   </v-app>

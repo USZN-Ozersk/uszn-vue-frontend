@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-flex flex-column white raised" min-height="533">
+  <v-card class="d-flex flex-column white mr-1 ml-1 mb-2" raised min-height="533">
     <div class="d-flex flex-column pa-3">
       <span class="text-xs-left subheading font-weight-regular">Начальник управления:</span><br>
       <span class="text-xs-left subheading font-weight-light">Солодовникова Лилия Владимировна</span>      

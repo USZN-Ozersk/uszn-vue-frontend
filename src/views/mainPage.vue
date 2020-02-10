@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
   <!-- первая строка блоков - информация об управлении -->
-    <v-row no-gutters justify="center" v-if="!getBadVision">
+    <v-row class="d-flex flex-wrap" no-gutters justify="center" v-if="!getBadVision">
       <v-col lg="4" md="5" sm="12">
         <topTitle>></topTitle>
       </v-col>
@@ -20,7 +20,7 @@
     </v-row>
 
     <!-- Вторая строка блоков - Новости и руководитель -->
-    <v-row no-gutters justify="center" v-if="!getBadVision">
+    <v-row class="pt-3" no-gutters justify="center" v-if="!getBadVision">
       <v-col lg="4" md="5" sm="12">
         <topNewsFirst></topNewsFirst>    
       </v-col>

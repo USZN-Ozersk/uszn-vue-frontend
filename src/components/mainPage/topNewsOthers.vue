@@ -1,5 +1,5 @@
 <template>
-  <v-card white raised class="d-flex flex-column align-right pa-3 mr-2" min-height="533">
+  <v-card white raised class="d-flex flex-column align-right pa-3 mr-1 ml-1 mb-2" min-height="533">
       <div class="d-flex justify-end mb-2">
       <v-btn color="blue-grey white--text">
         Все новости

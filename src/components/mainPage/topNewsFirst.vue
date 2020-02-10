@@ -1,5 +1,5 @@
 <template>
-    <v-card white raised class="d-flex flex-column pa-3 mr-2" min-height="533">
+    <v-card white raised class="d-flex flex-column pa-3 mr-1 ml-1 mb-2" min-height="533">
       <span class="headline font-weight-light left pb-3">Новости управления</span>
       <v-card class="d-flex flex-column" tile flat>
               <v-img :src="require('../../assets/'+getAllNews[0].img)" aspect-ratio="2.75"></v-img>

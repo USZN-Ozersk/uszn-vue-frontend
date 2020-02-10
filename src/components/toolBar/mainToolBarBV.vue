@@ -29,7 +29,7 @@
             <v-btn :color="getBvParams.bvColor" outlined @click="setBvParams({param: 'bvFont', value: 'large'})">
                 <span class="title">A</span>
             </v-btn>&nbsp;
-            <v-btn :color="getBvParams.bvColor" outlined @click="setBadVision(false), setBvParams({param: 'bvBackground', value: 'white'}), setBvParams({param: 'bvText', value: 'black--text'}), setBvParams({param: 'bvColor', value: 'black'})"><span class="caption font-weight-medium">Обычная версия</span></v-btn>
+            <v-btn :color="getBvParams.bvColor" outlined @click="setBadVision(false), setBvParams({param: 'bvBackground', value: 'blue-grey lighten-5'}), setBvParams({param: 'bvText', value: 'black--text'}), setBvParams({param: 'bvColor', value: 'black'})"><span class="caption font-weight-medium">Обычная версия</span></v-btn>
             </div>
             <v-spacer></v-spacer>
             

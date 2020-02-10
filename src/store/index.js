@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import dataMenu from '@/assets/menu.json' // Заглушка АПИ меню
+//import dataMenu from '@/assets/menu.json' // Заглушка АПИ меню
 import dataNews from '@/assets/news.json' // Заглушка АПИ новостей
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -43,10 +44,16 @@ export default new Vuex.Store({
     setBadVision: (context, payload) => {context.commit('setBadVision', payload)}, // Действие для мутации режима для слабовидящих
     setBvParams: (context, payload) => {context.commit('setBvParams', payload)}, // Действие для мутации параметров режима для слабовидящих
     loadMainMenu: (context) => {                                        // Действие для загрузки и мутации массива элементов основного меню
-      return new Promise((resolve) => {                                 // !Тут будет axios ajax запрос к API
-        context.commit('setFullMenu', dataMenu)
-        resolve()
-      }, 1000)
+      //return new Promise((resolve) => {                                 // !Тут будет axios ajax запрос к API
+      //  context.commit('setFullMenu', dataMenu)
+      //  resolve()
+      //}, 1000)
+      axios
+        .get('http://192.168.141.150:8080/api/v1/menu', { crossdomain: true })
+        .then(response => {
+          console.log(response)
+          context.commit('setFullMenu', response)
+        })
     },
     loadAllNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей
       return new Promise((resolve) => {                                 // !Тут будет axios ajax запрос к API

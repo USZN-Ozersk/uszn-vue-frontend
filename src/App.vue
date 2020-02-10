@@ -26,13 +26,14 @@ export default {
     //
   }),
   created() {
-    this.loadMainMenu();
+    this.loadMainMenu(); // Запускаем действие vuex загрузки пунктов меню
+    this.loadAllNews(); //Запускаем действие загрузки новостей
   },
   computed: {
     ...mapGetters(['getBadVision', 'getBvParams']) // Проксируем геттеры vuex
   },
   methods: {
-    ...mapActions(['loadMainMenu'])
+    ...mapActions(['loadMainMenu', 'loadAllNews']) // Проксируем действия vuex
   }
 
 };

@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer app v-model="drawerState" temporary>
-    <v-list class="pa-2">
+    <v-list class="pa-2 blue-grey lighten-5">
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>

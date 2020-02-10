@@ -1,39 +1,39 @@
 <template>
-  <v-container fluid>
+  <v-container wrap fluid>
   <!-- первая строка блоков - информация об управлении -->
-    <v-row class="d-flex flex-wrap" no-gutters justify="center" v-if="!getBadVision">
-      <v-col lg="4" md="5" sm="12">
+    <v-row no-gutters justify="center" v-if="!getBadVision">
+      <v-col cols="12" lg="4" md="5" sm="12">
         <topTitle>></topTitle>
       </v-col>
-      <v-col lg="4" md="5" sm="12">
+      <v-col cols="12" lg="4" md="5" sm="12">
         <topInfo></topInfo>
       </v-col>
-      <v-col lg="2" md="2" sm="12">
+      <v-col cols="12" lg="2" md="2" sm="12">
         <topPhones v-if="!getBadVision"></topPhones>
       </v-col>
     </v-row>
     <!-- Информация об управлении для людей с плохим зрением -->
     <v-row no-gutters justify="center" v-if="getBadVision">
-      <v-col sm="12">
+      <v-col cols="12" sm="12">
         <topInfoBV></topInfoBV>
       </v-col>
     </v-row>
 
     <!-- Вторая строка блоков - Новости и руководитель -->
     <v-row class="pt-3" no-gutters justify="center" v-if="!getBadVision">
-      <v-col lg="4" md="5" sm="12">
+      <v-col cols="12" lg="4" md="5" sm="12">
         <topNewsFirst></topNewsFirst>    
       </v-col>
-      <v-col lg="4" md="5" sm="12">
+      <v-col cols="12" lg="4" md="5" sm="12">
         <topNewsOthers></topNewsOthers>    
       </v-col>
-      <v-col lg="2" md="2" sm="12">
+      <v-col cols="12" lg="2" md="2" sm="12">
       <topBoss></topBoss>
       </v-col>
     </v-row>
     <!-- Новости людей с плохим зрением -->
     <v-row no-gutters justify="center" v-if="getBadVision">
-      <v-col sm="12">
+      <v-col cols="12" sm="12">
         <topNewsBV></topNewsBV>
       </v-col>
     </v-row>

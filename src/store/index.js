@@ -20,6 +20,7 @@ export default new Vuex.Store({
     fullMenu: [], // Массив элементов основного меню
     drawer: false, // Состояние боковой панели навигации
     allNews: [], //Массив элементов новостей
+    currentPage: null,
   },
   getters: {
     getBadVision: state => {return state.isBadVision}, //Геттер режима для слабовидящих
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     getSubMenu: state => id => {return state.fullMenu.filter(menu => menu.parent_id == id);}, //Геттер пунктов подменю
     getDrawer: state => {return state.drawer}, // Геттер состояния боковой панели навигации
     getAllNews: state => {return state.allNews}, // Геттер новостей
+    getOnePage: state => {return state.currentPage}, // Геттер содержимого страницы
   },
   mutations: {
     setBadVision: (state, payload) => {state.isBadVision = payload}, // Мутация режима для слабовидящих
@@ -35,6 +37,7 @@ export default new Vuex.Store({
     setFullMenu: (state, payload) => {state.fullMenu = payload}, // Мутация пунктов основного меню
     setDrawer: (state, payload) => {state.drawer = payload}, // Мутация состояния пуктов бокового меню
     setAllNews: (state, payload) => {state.allNews = payload}, // Мутация объектов новостей
+    setCurrentPage: (state, payload) => {state.currentPage = payload}, // Мутация состояния содержимого страницы
   },
   actions: {
     setBadVision: (context, payload) => {context.commit('setBadVision', payload)}, // Действие для мутации режима для слабовидящих
@@ -50,6 +53,12 @@ export default new Vuex.Store({
         context.commit('setAllNews', dataNews)
         resolve()
       }, 1000)
+    },
+    loadOnePage: (context, id) => {                                             // Действие для загрузки и мутации содержимого страницы
+      return new Promise(() => {
+        var post = dataNews.filter(dataNews => dataNews.id == id)
+        context.commit('setCurrentPage', post)
+      })
     },
     setDrawer: (context, payload) => {context.commit('setDrawer', payload)} // Действие для мутации состояния боковой панели
   },

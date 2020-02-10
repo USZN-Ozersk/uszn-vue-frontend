@@ -1,8 +1,10 @@
 <template>
-  <v-flex>
+  <v-container>
+  <v-card flat tile class="d-flex flex-column">
     <h1>{{ getOnePage[0].name }}</h1>
-    <p>{{ getOnePage[0].text }}</p>
-  </v-flex>
+    <v-html>{{ getOnePage[0].text }}</v-html>
+  </v-card>
+  </v-container>
 </template>
 
 <script>

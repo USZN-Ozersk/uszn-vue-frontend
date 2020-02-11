@@ -5,17 +5,17 @@
         Все новости
       </v-btn>
       </div>
-      <div class="d-flex flex-column" v-for="post in getAllNews" :key='post.id'>
+      <div class="d-flex flex-column" v-for="n in 4" :key="n">
         <div class="d-flex flex-row mb-2">
           <div class="d-flex">
-            <v-img :src="require('../../assets/'+post.img)" min-width="150" max-width="150" aspect-ratio="1.5" class="mr-2"></v-img>
+            <v-img :src="require('../../assets/'+getFirstNews[n].news_img)" min-width="150" max-width="150" aspect-ratio="1.5" class="mr-2"></v-img>
           </div>  
           <div class="d-flex flex-column flex-grow-1 justify-space-between">
             <div class="d-flex subheading">
-              <span>{{ post.name }}</span>
+              <span>{{ getFirstNews[n].news_name }}</span>
             </div>
             <div class="d-flex justify-end">  
-              <v-btn small flat color="blue-grey" class="white--text" router-link :to="{ name: 'page', params: {id: post.id}}">Подробнее</v-btn>
+              <v-btn small color="blue-grey" class="white--text" router-link :to="{ name: 'news', params: {id: getFirstNews[n].news_id}}">Подробнее</v-btn>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
 import { mapGetters } from 'vuex';
 export default {
  computed: {
-   ...mapGetters(['getAllNews'])
+   ...mapGetters(['getFirstNews'])
  }
 }
 </script>

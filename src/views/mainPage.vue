@@ -1,5 +1,5 @@
 <template>
-  <v-container wrap fluid>
+  <v-container fluid>
   <!-- первая строка блоков - информация об управлении -->
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="4" md="5" sm="12">

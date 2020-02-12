@@ -2,7 +2,6 @@
   <v-container fluid>
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="6" md="8">
-        <v-alert v-if="getError != ''" type="error">Ошибка загрузки данных!</v-alert>
         <v-card v-if="!getBadVision" flat tile class="d-flex flex-column blue-grey lighten-5">
           <h1>{{ getOnePage.page_name }}</h1>
           <span>{{ getOnePage.page_text }}</span>

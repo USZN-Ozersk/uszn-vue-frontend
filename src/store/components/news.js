@@ -1,7 +1,7 @@
 import axios from 'axios'
 export default {
     state: {
-        firstNews: [], //Массив элементов новостей для главной страницы
+        firstNews: [''], //Массив элементов новостей для главной страницы
         oneNews: '', 
     },
     getters: {
@@ -13,7 +13,7 @@ export default {
         setOneNews: (state, payload) => {state.oneNews = payload},
     },
     actions: {
-        loadFirstNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей главной страницы
+          loadFirstNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей главной страницы
             axios
               .get('http://192.168.141.150:8080/api/v1/news/first/5')
               .then(response => {

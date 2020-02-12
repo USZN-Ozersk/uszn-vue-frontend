@@ -21,10 +21,6 @@ export default {
     mainToolBarBadVision: () => import('@/components/toolBar/mainToolBarBV'), // Основной тулбар
     drawer: () => import('@/components/drawer/drawer'),
   },
-
-  data: () => ({
-    //
-  }),
   created() {
     this.loadMainMenu(); // Запускаем действие vuex загрузки пунктов меню
     this.loadFirstNews(); //Запускаем действие загрузки новостей

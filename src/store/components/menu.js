@@ -1,7 +1,7 @@
 import axios from 'axios'
 export default {
     state: {
-        fullMenu: [], // Массив элементов основного меню
+        fullMenu: [''], // Массив элементов основного меню
     },
     getters: {
         getMainMenu: state => {return state.fullMenu.filter(menu => menu.menu_parent == 0)}, // Геттер пунктов основного меню

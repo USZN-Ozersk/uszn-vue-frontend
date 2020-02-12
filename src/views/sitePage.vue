@@ -47,12 +47,11 @@ export default {
   },
   watch: {
     $route() {
-      this.setError('')
       this.loadOnePage(this.id);  
     }
   },
   methods: {
-    ...mapActions(['loadOnePage', 'setError'])
+    ...mapActions(['loadOnePage'])
   },
   created() {
     this.loadOnePage(this.id);

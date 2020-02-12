@@ -37,7 +37,7 @@ import {mapGetters, mapActions} from 'vuex';
 export default {
   props: ['id'],
   computed: {
-    ...mapGetters(['getOneNews', 'getFirstNews', 'getError', 'getBadVision', 'getBvParams']),
+    ...mapGetters(['getOneNews', 'getFirstNews', 'getBadVision', 'getBvParams']),
   },
   watch: {
     $route() {

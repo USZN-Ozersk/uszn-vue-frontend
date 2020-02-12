@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style>
-.hide {
-    visibility: hidden;
+.hide img {
+    display: none;
 }
 </style>

@@ -25,7 +25,7 @@
             <div class="d-flex flex-column flex-grow-1">
               <span class="text-center pb-2" v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'title' : getBvParams.bvFont == 'medium', 'display-1' : getBvParams.bvFont == 'large'}">{{ getOneNews.news_name }}</span>
             <div v-if="getBvParams.bvImages"><v-img :src="require('../assets/'+getOneNews.news_img)" aspect-ratio="1.3"></v-img></div>
-            <span v-html="getOneNews.news_text" v-bind:class="{'body-2' : getBvParams.bvFont == 'small', 'body-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"/>
+            <span v-html="getOneNews.news_text" v-bind:class="{'hide' : !getBvParams.bvImages, 'body-2' : getBvParams.bvFont == 'small', 'body-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"/>
             </div>
           </v-col>
         </v-row>

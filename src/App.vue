@@ -6,6 +6,7 @@
     <v-content v-bind:class="[getBvParams.bvBackground, getBvParams.bvText]">
       <router-view></router-view>
     </v-content>
+    <myfooter v-if="!getBadVision"></myfooter>
   </v-app>
 </template>
 
@@ -20,16 +21,18 @@ export default {
     mainToolBar: () => import('@/components/toolBar/mainToolBar'), // Основной тулбар
     mainToolBarBadVision: () => import('@/components/toolBar/mainToolBarBV'), // Основной тулбар
     drawer: () => import('@/components/drawer/drawer'),
+    myfooter: () => import('@/components/footer/footer'),
   },
   created() {
     this.loadMainMenu(); // Запускаем действие vuex загрузки пунктов меню
     this.loadFirstNews(); //Запускаем действие загрузки новостей
+    this.loadNewsCount();
   },
   computed: {
     ...mapGetters(['getBadVision', 'getBvParams']) // Проксируем геттеры vuex
   },
   methods: {
-    ...mapActions(['loadMainMenu', 'loadFirstNews']) // Проксируем действия vuex
+    ...mapActions(['loadMainMenu', 'loadFirstNews', 'loadNewsCount']) // Проксируем действия vuex
   }
 
 };

@@ -3,14 +3,20 @@ export default {
     state: {
         firstNews: [''], //Массив элементов новостей для главной страницы
         oneNews: '', 
+        newsPage: [''],
+        newsPageCount: 0,
     },
     getters: {
         getFirstNews: state => {return state.firstNews}, // Геттер новостей
-        getOneNews: state => {return state.oneNews},
+        getOneNews: state => {return state.oneNews}, //
+        getNewsPage: state => {return state.newsPage}, //
+        getNewsPageCount: state => {return state.newsPageCount}, //
     },
     mutations: {
         setFirstNews: (state, payload) => {state.firstNews = payload}, // Мутация объектов новостей
         setOneNews: (state, payload) => {state.oneNews = payload},
+        setNewsPage: (state, payload) => {state.newsPage = payload},
+        setNewsPageCount: (state, payload) => {state.newsPageCount = payload},
     },
     actions: {
           loadFirstNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей главной страницы
@@ -33,5 +39,25 @@ export default {
                 context.commit('setError', error)
               })
           },
+          loadNewsPage: (context, id) => {
+            axios
+              .get('http://127.0.0.1:8080/api/v1/news/page/'+(id-1))
+              .then(response => {
+                context.commit('setNewsPage', response.data)
+              })
+              .catch(error => {
+                context.commit('setError', error)
+              })
+          },
+          loadNewsCount: (context) => {
+            axios
+              .get('http://127.0.0.1:8080/api/v1/news/count/all')
+              .then(response => {
+                context.commit('setNewsPageCount', Math.ceil(response.data.count/10))
+              })
+              .catch(error => {
+                context.commit('setError', error)
+              })
+          }
     }
 }

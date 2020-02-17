@@ -3,7 +3,7 @@
         <v-row justify="center" v-if="!getBadVision">
             <v-col cols="12" lg="7">
                 <v-card flat class="d-flex flex-column blue-grey lighten-5">
-                    <img v-bind:src="getOneNews.news_img" aspect-ratio="1.3"/>
+                    <v-img v-bind:src="getOneNews.news_img" aspect-ratio="1.3"/>
                     <v-card-title>{{ getOneNews.news_name }}</v-card-title>
                     <div v-html="getOneNews.news_text"></div>
                 </v-card>

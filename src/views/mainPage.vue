@@ -33,7 +33,7 @@
     </v-row>
     <!-- Новости людей с плохим зрением -->
     <v-row no-gutters justify="center" v-if="getBadVision">
-      <v-col cols="12" sm="12">
+      <v-col cols="12" sm="10">
         <topNewsBV></topNewsBV>
       </v-col>
     </v-row>

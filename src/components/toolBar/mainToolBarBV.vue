@@ -38,6 +38,9 @@
         <!-- Слот расширения -->
         <v-spacer slot="extension"></v-spacer>
         <v-toolbar-items slot="extension" class="hidden-md-and-down">
+            <v-btn :color="getBvParams.bvColor" class="ml-1" outlined to="/">
+                <span v-bind:class="{'caption font-weight-medium' : getBvParams.bvFont == 'small', 'body-2' : getBvParams.bvFont == 'medium', 'subheading font-weight-medium' : getBvParams.bvFont == 'large'}">главная</span>
+            </v-btn>
             <v-btn :color="getBvParams.bvColor" class="ml-1" outlined v-for="menu in getMainMenu" :key="menu.menu_id" :to="{ name: 'page', params: { id: menu.menu_id }}">
                 <span v-bind:class="{'caption font-weight-medium' : getBvParams.bvFont == 'small', 'body-2' : getBvParams.bvFont == 'medium', 'subheading font-weight-medium' : getBvParams.bvFont == 'large'}">{{ menu.menu_item }}</span>
             </v-btn>

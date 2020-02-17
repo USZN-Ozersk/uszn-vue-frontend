@@ -21,7 +21,7 @@ export default {
     actions: {
           loadFirstNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей главной страницы
             axios
-              .get('http://192.168.141.150:8080/api/v1/news/first/5')
+              .get('http://127.0.0.1:8080/api/v1/news/first/5')
               .then(response => {
                 context.commit('setFirstNews', response.data)
               })

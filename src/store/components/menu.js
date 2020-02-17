@@ -13,7 +13,7 @@ export default {
     actions: {
         loadMainMenu: (context) => {                                        // Действие для загрузки и мутации массива элементов основного меню
             axios                                                             // Запрос к АПИ 
-              .get('http://192.168.141.150:8080/api/v1/menu')
+              .get('http://127.0.0.1:8080/api/v1/menu')
               .then(response => {
                 context.commit('setFullMenu', response.data)
               })

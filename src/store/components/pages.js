@@ -12,7 +12,7 @@ export default {
     actions: {
         loadOnePage: (context, id) => {                                             // Действие для загрузки и мутации содержимого страницы
             axios
-              .get('http://127.0.0.1:8080/api/v1/page/'+id)
+              .get('http://45.84.225.234:81/api/v1/page/'+id)
               .then(response =>{
                 context.commit('setCurrentPage', response.data)
               })

@@ -5,7 +5,7 @@
       <span class="text-xs-left subheading font-weight-light">Солодовникова Лилия Владимировна</span>      
     </div>
     <div class="d-flex pl-3 pr-3">
-      <v-img :src="require('../../assets/nach.jpg')" aspect-ratio="0.9"></v-img>
+      <v-img :src="require('../../assets/boss.png')" aspect-ratio="0.9"></v-img>
     </div>
     <div class="d-flex flex-column pa-3">
       <span class="text-xs-left subheading font-weight-regular">Прием по личным вопросам:</span><br>

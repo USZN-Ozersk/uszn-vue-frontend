@@ -12,7 +12,7 @@ export default {
     actions: {
         loadOnePage: (context, id) => {                                             // Действие для загрузки и мутации содержимого страницы
             axios
-              .get('http://45.84.225.234:81/api/v1/page/'+id)
+              .get('https://usznozersk.ru:81/api/v1/page/'+id)
               .then(response =>{
                 context.commit('setCurrentPage', response.data)
               })

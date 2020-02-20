@@ -13,7 +13,7 @@ export default {
     actions: {
         loadMainMenu: (context) => {                                        // Действие для загрузки и мутации массива элементов основного меню
             axios                                                             // Запрос к АПИ 
-              .get('https://usznozersk.ru:81/api/v1/menu')
+              .get(path+'api/v1/menu')
               .then(response => {
                 context.commit('setFullMenu', response.data)
               })

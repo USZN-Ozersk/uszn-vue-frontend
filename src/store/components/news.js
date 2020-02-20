@@ -21,7 +21,7 @@ export default {
     actions: {
           loadFirstNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей главной страницы
             axios
-              .get('https://usznozersk.ru:81/api/v1/news/first/5')
+              .get(path+'api/v1/news/first/5')
               .then(response => {
                 context.commit('setFirstNews', response.data)
               })
@@ -31,7 +31,7 @@ export default {
           },
           loadOneNews: (context, id) => {                                   // Действие для загрузки и мутации единичной новости
             axios
-              .get('https://usznozersk.ru:81/api/v1/news/single/'+id)
+              .get(path+'api/v1/news/single/'+id)
               .then(response => {
                 context.commit('setOneNews', response.data)
               })
@@ -41,7 +41,7 @@ export default {
           },
           loadNewsPage: (context, id) => {
             axios
-              .get('https://usznozersk.ru:81/api/v1/news/page/'+(id-1))
+              .get(path+'api/v1/news/page/'+(id-1))
               .then(response => {
                 context.commit('setNewsPage', response.data)
               })
@@ -51,7 +51,7 @@ export default {
           },
           loadNewsCount: (context) => {
             axios
-              .get('https://usznozersk.ru:81/api/v1/news/count/all')
+              .get(path+'api/v1/news/count/all')
               .then(response => {
                 context.commit('setNewsPageCount', Math.ceil(response.data.count/10))
               })

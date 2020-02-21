@@ -6,6 +6,7 @@ import menu from './components/menu'
 import pages from './components/pages'
 import vision from './components/vision'
 import errors from './components/error'
+import auth from './components/auth'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     menu,
     pages,
     vision,
-    errors
+    errors,
+    auth
   }
 })

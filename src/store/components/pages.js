@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const path = "http://127.0.0.1:8080/"
+const path = "http://localhost:8080/api/v1/"
 
 export default {
     state: {
@@ -15,7 +15,7 @@ export default {
     actions: {
         loadOnePage: (context, id) => {                                             // Действие для загрузки и мутации содержимого страницы
             axios
-              .get(path+'api/v1/page/'+id)
+              .get(path+'page/'+id)
               .then(response =>{
                 context.commit('setCurrentPage', response.data)
               })

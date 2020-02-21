@@ -26,6 +26,12 @@ const routes = [
     name: 'listNews',
     component: () => import('../views/listNews.vue'),
     props: true
+  },
+  {
+    path: '/admin',
+    name: 'pageAdmin',
+    component: () => import('../views/pageAdmin.vue'),
+    props: true
   }
 ]
 

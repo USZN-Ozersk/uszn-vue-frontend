@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const path = "http://127.0.0.1:8080/"
+const path = "http://localhost:8080/api/v1/"
 
 export default {
     state: {
@@ -24,7 +24,7 @@ export default {
     actions: {
           loadFirstNews: (context) => {                                                 // Действие для загрузки и мутации массива элементов новостей главной страницы
             axios
-              .get(path+'api/v1/news/first/5')
+              .get(path+'news/first/5')
               .then(response => {
                 context.commit('setFirstNews', response.data)
               })
@@ -34,7 +34,7 @@ export default {
           },
           loadOneNews: (context, id) => {                                   // Действие для загрузки и мутации единичной новости
             axios
-              .get(path+'api/v1/news/single/'+id)
+              .get(path+'news/single/'+id)
               .then(response => {
                 context.commit('setOneNews', response.data)
               })
@@ -44,7 +44,7 @@ export default {
           },
           loadNewsPage: (context, id) => {
             axios
-              .get(path+'api/v1/news/page/'+(id-1))
+              .get(path+'news/page/'+(id-1))
               .then(response => {
                 context.commit('setNewsPage', response.data)
               })
@@ -54,7 +54,7 @@ export default {
           },
           loadNewsCount: (context) => {
             axios
-              .get(path+'api/v1/news/count/all')
+              .get(path+'news/count/all')
               .then(response => {
                 context.commit('setNewsPageCount', Math.ceil(response.data.count/10))
               })

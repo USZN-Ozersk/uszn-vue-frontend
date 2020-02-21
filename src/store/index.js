@@ -10,7 +10,6 @@ import errors from './components/error'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  path = "http://127.0.0.1:8080/",
   modules: {
     drawer,
     news,

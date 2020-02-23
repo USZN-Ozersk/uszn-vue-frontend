@@ -17,16 +17,12 @@ export default {
         setReqData: (state, payload) => {state.reqData = payload},
     },
     actions: {
-        authorize: (context) => {
-            
+        authorize: (context, login, password) => {
             axios
-                .post(path+'auth')
-            //axios({
+                .post(path+'auth',{ login: login, password: password})
+            //({
             //    method: 'POST',
             //    url: path+'auth', 
-            //    headers: {
-            //            'Access-Control-Allow-Origin': '*'
-            //        },
             //    data:{
             //            login: login,
             //            password: password,

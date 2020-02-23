@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-const path = "http://localhost:8080/api/v1/"
-axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
+const path = "http://127.0.0.1:8080/api/v1/"
 
 export default {
     state: {
@@ -17,17 +16,18 @@ export default {
         setReqData: (state, payload) => {state.reqData = payload},
     },
     actions: {
-        authorize: (context, login, password) => {
-            axios
-                .post(path+'auth',{ login: login, password: password})
-            //({
-            //    method: 'POST',
-            //    url: path+'auth', 
-            //    data:{
-            //            login: login,
-            //            password: password,
-            //        }
-            //    })
+        authorize: (context, userdata) => {
+            axios({
+                method: 'POST',
+                url: path+'auth', 
+                data:{
+                    login: userdata.login,
+                    password: userdata.password
+                },
+                headers: {
+                    "Content-Type": "text/plain"
+                }
+                })
                 .then(response => {
                     context.commit('setReqData', response.data)
                 })

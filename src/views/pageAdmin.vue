@@ -8,14 +8,14 @@
                             <v-toolbar-title>Login form</v-toolbar-title>
                         </v-toolbar>
                         <v-form>
-                            <v-text-field v-model="login" label="Login" name="login" prepend-icon="fas fa-user" type="text" />
-                            <v-text-field v-model="password" label="Password" name="password" prepend-icon="fas fa-lock" type="password" />
+                            <v-text-field v-model="userdata.login" label="Login" name="login" prepend-icon="fas fa-user" type="text" />
+                            <v-text-field v-model="userdata.password" label="Password" name="password" prepend-icon="fas fa-lock" type="password" />
                         </v-form>
                         <span>{{ this.getReqData }}</span>
                    </v-card-text>
                    <v-card-actions>
                         <v-spacer />
-                        <v-btn @click="authorize(login.value, password.value)">Login</v-btn>
+                        <v-btn @click="authorize(userdata)">Login</v-btn>
                    </v-card-actions>
                </v-card>
            </v-col>
@@ -28,8 +28,10 @@ import {mapGetters, mapActions} from 'vuex';
 export default {
     data() {
         return {
-            login: '',
-            password: '',
+            userdata: {
+                login: '',
+                password: ''
+            }
         }
     },
   computed: {
@@ -37,6 +39,6 @@ export default {
   },
   methods: {
     ...mapActions(['authorize'])
-  },
+  }
 }
 </script>

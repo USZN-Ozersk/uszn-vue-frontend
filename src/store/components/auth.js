@@ -5,15 +5,18 @@ const path = "http://127.0.0.1:8080/api/v1/"
 export default {
     state: {
         isAuth: false,
-        reqData: ''
+        jwtToken: '',
+        authError: ''
     },
     getters: {
         getAuth: state => {return state.isAuth},
-        getReqData: state => {return state.reqData}
+        getJwtToken: state => {return state.jwtToken},
+        getAuthError: state => {return state.authError}
     },
     mutations: {
         setAuth: (state, payload) => {state.isAuth = payload},
-        setReqData: (state, payload) => {state.reqData = payload},
+        setJwtToken: (state, payload) => {state.jwtToken = payload},
+        setAuthError: (state, payload) => {state.authError = payload}
     },
     actions: {
         authorize: (context, userdata) => {
@@ -29,8 +32,18 @@ export default {
                 }
                 })
                 .then(response => {
-                    context.commit('setReqData', response.data)
+                    if (response.data.jwt != '') {
+                        context.commit('setAuth', true)
+                        context.commit('setJwtToken', response.data.jwt)
+                    }
                 })
+                .catch(error => {
+                    context.commit('setAuthError', error.response.data.error)
+                })
+        },
+
+        logout: (context) => {
+            context.commit('setAuth', false)
         }
         
     }

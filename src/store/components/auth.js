@@ -19,7 +19,7 @@ export default {
         setAuthError: (state, payload) => {state.authError = payload}
     },
     actions: {
-        authorize: (context, userdata) => {
+        authorize(context, userdata) {
             axios({
                 method: 'POST',
                 url: path+'auth', 

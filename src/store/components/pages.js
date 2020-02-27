@@ -16,8 +16,8 @@ export default {
         setAllPages: (state, payload) => {state.allPages = payload}
     },
     actions: {
-        loadOnePage: (context, id) => {                                             // Действие для загрузки и мутации содержимого страницы
-            axios
+        async loadOnePage(context, id) {                                             // Действие для загрузки и мутации содержимого страницы
+            await axios
               .get(path+'page/'+id)
               .then(response =>{
                 context.commit('setCurrentPage', response.data)
@@ -26,15 +26,13 @@ export default {
                 context.commit('setError', error)
               })
         },
-        loadAllPages: (context, , , rootGetters) => {
-            console.log(rootGetters.getToken)
+        loadAllPages: (context) => {
             axios
-                .get(path+'private/pages', {
-                    headers: {
-                        "Token": context.rootGetters['auth/getToken']
-                    }
-                }
-            )
+            .get(path+'private/pages', {
+                headers: {
+                    "Token": context.getters.getJwtToken
+                }   
+            })
             .then(response => {
                 context.commit('setAllPages', response)
             })

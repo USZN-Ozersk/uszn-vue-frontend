@@ -15,7 +15,7 @@
                    </v-card-text>
                    <v-card-actions>
                         <v-spacer />
-                        <v-btn @click="authorize(userdata); userdata.login = userdata.password = ''">Login</v-btn>
+                        <v-btn @click="logIn(userdata)">Login</v-btn>
                    </v-card-actions>
                </v-card>
            </v-col>
@@ -145,11 +145,15 @@ export default {
         this.newsdata.news_name = this.getOneNews.news_name
         this.newsdata.news_text = this.getOneNews.news_text
         this.newsdata.news_img = this.getOneNews.news_img
+    },
+    logIn(userdata) {
+        this.authorize(userdata);
+        this.loadAllPages(); 
+        userdata.login = userdata.password = ''
     }
   },
   created() {
-      this.loadNewsPage(1),
-      this.loadAllPages()
+      this.loadNewsPage(1)
   }
 }
 </script>

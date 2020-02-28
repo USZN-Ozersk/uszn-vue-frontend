@@ -44,6 +44,7 @@ export default {
 
         logout: (context) => {
             context.commit('setAuth', false)
+            context.commit('setJwtToken', '')
         }
         
     }

@@ -26,8 +26,8 @@
                <div class="d-flex flex-row">
                 <v-tabs v-model="tab">
                     <v-tab key="1">Меню</v-tab>
-                    <v-tab key="2">Новости</v-tab>
-                    <v-tab key="3">Страницы</v-tab>
+                    <v-tab @change="loadNewsPage(1)" key="2">Новости</v-tab>
+                    <v-tab @change="loadAllPages()" key="3">Страницы</v-tab>
                     <v-tab-item key="1">
                         <div class="d-flex flex-row">
                         <v-card flat class="d-flex mr-3" min-width="30%">
@@ -39,9 +39,9 @@
                                     <v-toolbar color="primary" dark flat>
                                         <v-toolbar-title>Меню</v-toolbar-title>
                                     </v-toolbar>
-                                    <v-text-field v-model="menudata.menu_id"></v-text-field>
-                                    <v-text-field v-model="menudata.menu_item"></v-text-field>
-                                    <v-text-field v-model="menudata.menu_parent"></v-text-field>
+                                    <v-text-field label="id" v-model="menudata.menu_id"></v-text-field>
+                                    <v-text-field label="Название" v-model="menudata.menu_item"></v-text-field>
+                                    <v-text-field label="Родительский" v-model="menudata.menu_parent"></v-text-field>
                                 </v-form>
                             </v-card-text>
                             <v-card-actions>
@@ -56,7 +56,7 @@
                     <v-tab-item key="2">
                         <div class="d-flex flex-row">
                             <v-card class="d-flex flex-column pa-3 mr-3" min-width="20%">
-                                <div class="d-flex flex-row" v-for="news in getNewsPage" :key="news.news_id">
+                                <div class="d-flex" v-for="news in getNewsPage" :key="news.news_id">
                                     <a @click.prevent="setNewsForm(news.news_id)">{{ news.news_name }}</a>
                                 </div>
                             </v-card>
@@ -66,10 +66,10 @@
                                         <v-toolbar color="primary" dark flat>
                                             <v-toolbar-title>Новости</v-toolbar-title>
                                         </v-toolbar>
-                                        <v-text-field v-model="newsdata.news_id"></v-text-field>
-                                        <v-text-field v-model="newsdata.news_name"></v-text-field>
-                                        <v-textarea rows="13" v-model="newsdata.news_text"></v-textarea>
-                                        <v-text-field v-model="newsdata.news_img"></v-text-field>
+                                        <v-text-field label="id" v-model="newsdata.news_id"></v-text-field>
+                                        <v-text-field label="Заголовок" v-model="newsdata.news_name"></v-text-field>
+                                        <v-textarea label="Текст" rows="12" v-model="newsdata.news_text"></v-textarea>
+                                        <v-text-field label="Изображение" v-model="newsdata.news_img"></v-text-field>
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
@@ -83,7 +83,46 @@
                         </div>
                     </v-tab-item>
                     <v-tab-item key="3">
-                        {{ getAllPages.page_name }}
+                        <div class="d-flex flex-row">
+                            <v-card class="d-flex flex-column pa-3 mr-3" min-width="20%">
+                                <div class="d-flex" v-for="page in getAllPages" :key="page.page_id">
+                                    <a @click.prevent="setPagesForm(page.page_id)">{{ page.page_name }}</a>
+                                </div>
+                            </v-card>
+                            <v-card min-width="60%" class="mr-3">
+                                <v-card-text>
+                                    <v-form>
+                                        <v-toolbar color="primary" dark flat>
+                                            <v-toolbar-title>Страницы</v-toolbar-title>
+                                        </v-toolbar>
+                                        <br>
+                                        <div class="d-flex flex-row">
+                                            <v-text-field class="mr-3" outlined label="id" v-model="pagedata.page_id"></v-text-field>
+                                            <v-text-field outlined label="Пункт меню" v-model="pagedata.page_menu"></v-text-field>
+                                        </div>
+                                        
+                                        <v-text-field outlined label="Заголовок" v-model="pagedata.page_name"></v-text-field>
+                                        <v-textarea outlined rows="10" label="Текст" v-model="pagedata.page_text"></v-textarea>
+                                        
+                                    </v-form>
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-btn color="success" :disabled="pageAdd || !pageValid">Добавить</v-btn>
+                                    <v-spacer />
+                                    <v-btn color="warning" :disabled="!pageAdd || !pageValid">Изменить</v-btn>
+                                    <v-btn color="error" :disabled="!pageAdd || !pageValid">Удалить</v-btn>
+                                </v-card-actions>
+                            </v-card>
+                            <v-card min-width="20%" class="pa-3">
+                                <v-form>
+                                    <v-toolbar color="primary" dark flat>
+                                        <v-toolbar-title>Файлы</v-toolbar-title>
+                                    </v-toolbar>
+                                    <br>
+                                    <v-file-input full-width outlined label="Загрузить файл"></v-file-input>
+                                </v-form>
+                            </v-card>
+                        </div>
                     </v-tab-item>
                 </v-tabs>
                 <v-btn @click="logout">Выход</v-btn>
@@ -113,27 +152,39 @@ export default {
                 news_text: '',
                 news_img: ''
             },
+            pagedata: {
+                page_id: '',
+                page_name: '',
+                page_text: '',
+                page_menu: ''
+            },
             tab: null,
             active: [{id: '', name: '', parent: ''}],
         }
     },
   computed: {
-    ...mapGetters(['getAuth', 'getAuthError', 'getTreeMenu', 'getNewsPage', 'getOneNews', 'getAllPages']),
+    ...mapGetters(['getAuth', 'getAuthError', 'getTreeMenu', 'getNewsPage', 'getOneNews', 'getAllPages', 'getOnePage']),
     menuValid() {
-        return this.menudata.menu_item
+        return this.menudata.menu_item != ''
     },
     menuAdd() {
-        return this.menudata.menu_id
+        return this.menudata.menu_id != ''
     },
     newsValid() {
-        return this.newsdata.news_name && this.newsdata.news_text && this.newsdata.news_img
+        return this.newsdata.news_name != '' && this.newsdata.news_text != '' && this.newsdata.news_img != ''
     },
     newsAdd() {
-        return this.newsdata.news_id
+        return this.newsdata.news_id != ''
+    },
+    pageValid() {
+        return this.pagedata.page_name != '' && this.pagedata.page_text != '' && this.pagedata.page_menu != ''
+    },
+    pageAdd() {
+        return this.pagedata.page_id != ''
     }
   },
   methods: {
-    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages']),
+    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage']),
     setMenuFrom() {
         this.menudata.menu_id = this.active[0].id
         this.menudata.menu_item = this.active[0].name
@@ -146,14 +197,17 @@ export default {
         this.newsdata.news_text = this.getOneNews.news_text
         this.newsdata.news_img = this.getOneNews.news_img
     },
+    setPagesForm(id) {
+        this.loadOnePage(id)
+        this.pagedata.page_id = this.getOnePage.page_id
+        this.pagedata.page_name = this.getOnePage.page_name
+        this.pagedata.page_text = this.getOnePage.page_text
+        this.pagedata.page_menu = this.getOnePage.page_menu
+    },
     logIn(userdata) {
         this.authorize(userdata);
-        this.loadAllPages(); 
         userdata.login = userdata.password = ''
     }
-  },
-  created() {
-      this.loadNewsPage(1)
   }
 }
 </script>

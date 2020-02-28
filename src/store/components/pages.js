@@ -34,7 +34,7 @@ export default {
                 }   
             })
             .then(response => {
-                context.commit('setAllPages', response)
+                context.commit('setAllPages', response.data)
             })
         }
     }

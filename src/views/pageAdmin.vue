@@ -45,10 +45,10 @@
                                 </v-form>
                             </v-card-text>
                             <v-card-actions>
-                                <v-btn color="success" :disabled="menuAdd || !menuValid">Добавить</v-btn>
+                                <v-btn @click="insertMenuItem(menudata)" color="success" :disabled="menuAdd || !menuValid">Добавить</v-btn>
                                 <v-spacer />
-                                <v-btn color="warning" :disabled="!menuAdd || !menuValid">Изменить</v-btn>
-                                <v-btn color="error" :disabled="!menuAdd || !menuValid">Удалить</v-btn>
+                                <v-btn @click="updateMenuItem(menudata)" color="warning" :disabled="!menuAdd || !menuValid">Изменить</v-btn>
+                                <v-btn @click="deleteMenuItem(menudata)" color="error" :disabled="!menuAdd || !menuValid">Удалить</v-btn>
                             </v-card-actions>
                         </v-card>
                         </div>
@@ -184,7 +184,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage']),
+    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem']),
     setMenuFrom() {
         this.menudata.menu_id = this.active[0].id
         this.menudata.menu_item = this.active[0].name

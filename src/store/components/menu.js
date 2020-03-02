@@ -46,5 +46,69 @@ export default {
                 context.commit('setError', error)
               })
           },
+        insertMenuItem: (context, menudata) => {
+            axios({
+                method: 'POST',
+                url: path+'private/menu',
+                data: {
+                    menuitem: menudata.menu_item,
+                    menuparent: menudata.menu_parent
+                  },
+                  headers: {
+                    "Token": context.getters.getJwtToken
+                  }
+              })
+              .then(response => {
+                  if (response.data.result == "ok") {
+                    context.dispatch('loadMainMenu')
+                  }
+                  
+              })
+              .catch(error => {
+                  context.commit('setError', error)
+              })
+        },
+        deleteMenuItem: (context, menudata) => {
+            axios({
+                method: 'DELETE',
+                url: path+'private/menu',
+                data: {
+                    id: menudata.menu_id
+                },
+                headers: {
+                    "Token": context.getters.getJwtToken
+                }
+            })
+            .then(response => {
+                if (response.data.result == "ok") {
+                    context.dispatch('loadMainMenu')
+                }
+            })
+            .catch(error => {
+                context.commit('setError', error)
+            })
+        },
+        updateMenuItem: (context, menudata) => {
+            axios({
+                method: 'PUT',
+                url: path+'private/menu',
+                data: {
+                    id: menudata.menu_id,
+                    menuitem: menudata.menu_item,
+                    menuparent: menudata.menu_parent
+                },
+                headers: {
+                    "Token": context.getters.getJwtToken
+                }
+            })
+            .then(response => {
+                if (response.data.result == "ok") {
+                    context.dispatch('loadMainMenu')
+                }
+            })
+            .catch(error => {
+                context.commit('setError', error)
+            })
+        }
     }
 }

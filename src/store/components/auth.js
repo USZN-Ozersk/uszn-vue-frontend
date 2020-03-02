@@ -23,7 +23,7 @@ export default {
             axios({
                 method: 'POST',
                 url: path+'auth', 
-                data:{
+                data: {
                     login: userdata.login,
                     password: userdata.password
                 },

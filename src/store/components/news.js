@@ -32,8 +32,8 @@ export default {
                 context.commit('setError', error)
               })
           },
-          loadOneNews: (context, id) => {                                   // Действие для загрузки и мутации единичной новости
-            axios
+          async loadOneNews(context, id) {                                   // Действие для загрузки и мутации единичной новости
+            await axios
               .get(path+'news/single/'+id)
               .then(response => {
                 context.commit('setOneNews', response.data)
@@ -42,8 +42,8 @@ export default {
                 context.commit('setError', error)
               })
           },
-          loadNewsPage: (context, id) => {
-            axios
+          async loadNewsPage(context, id) {
+            await axios
               .get(path+'news/page/'+(id-1))
               .then(response => {
                 context.commit('setNewsPage', response.data)
@@ -77,7 +77,7 @@ export default {
             })
             .then(response => {
               if (response.data.result == "ok") {
-                context.dispatch('loadNewsPage(1)')
+                context.dispatch('loadNewsPage', 1)
               }
             })
             .catch(error => {
@@ -97,7 +97,7 @@ export default {
             })
             .then(response => {
               if(response.data.result == "ok") {
-                context.dispatch('loadNewsPage(1)')
+                context.dispatch('loadNewsPage', 1)
               }
             })
             .catch(error => {
@@ -120,7 +120,7 @@ export default {
             })
             .then(response => {
               if(response.data.result == "ok") {
-                context.dispatch('loadNewsPage(1)')
+                context.dispatch('loadNewsPage', 1)
               }
             })
             .catch(error => {

@@ -31,7 +31,7 @@
                     <v-tab-item key="1">
                         <div class="d-flex flex-row">
                         <v-card flat class="d-flex mr-3" min-width="30%">
-                        <v-treeview @update:active="setMenuFrom" expand-icon="fa fa-angle-right" return-object activatable active-class="primary--text" :active.sync="active" color="blue" :items="getTreeMenu"></v-treeview>
+                        <v-treeview @update:active.capture="setMenuForm" expand-icon="fa fa-angle-right" return-object activatable active-class="primary--text" :active.sync="active" color="blue" :items="getTreeMenu"></v-treeview>
                         </v-card>
                         <v-card flat class="pa-3" min-width="30%">
                             <v-card-text>
@@ -190,20 +190,22 @@ export default {
   },
   methods: {
     ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
-    setMenuFrom() {
-        this.menudata.menu_id = this.active[0].id
-        this.menudata.menu_item = this.active[0].name
-        this.menudata.menu_parent = this.active[0].parent
+    setMenuForm() {
+        if (this.active[0]) {
+            this.menudata.menu_id = this.active[0].id
+            this.menudata.menu_item = this.active[0].name
+            this.menudata.menu_parent = this.active[0].parent
+        }
     },
-    setNewsForm(id) {
-        this.loadOneNews(id)
+    async setNewsForm(id) {
+        await this.loadOneNews(id)
         this.newsdata.news_id = this.getOneNews.news_id
         this.newsdata.news_name = this.getOneNews.news_name
         this.newsdata.news_text = this.getOneNews.news_text
         this.newsdata.news_img = this.getOneNews.news_img
     },
-    setPagesForm(id) {
-        this.loadOnePage(id)
+    async setPagesForm(id) {
+        await this.loadOnePage(id)
         this.pagedata.page_id = this.getOnePage.page_id
         this.pagedata.page_name = this.getOnePage.page_name
         this.pagedata.page_text = this.getOnePage.page_text

@@ -39,9 +39,10 @@
                                     <v-toolbar color="primary" dark flat>
                                         <v-toolbar-title>Меню</v-toolbar-title>
                                     </v-toolbar>
-                                    <v-text-field label="id" v-model="menudata.menu_id"></v-text-field>
-                                    <v-text-field label="Название" v-model="menudata.menu_item"></v-text-field>
-                                    <v-text-field label="Родительский" v-model="menudata.menu_parent"></v-text-field>
+                                    <br>
+                                    <v-text-field outlined label="id" v-model="menudata.menu_id"></v-text-field>
+                                    <v-text-field outlined label="Название" v-model="menudata.menu_item"></v-text-field>
+                                    <v-text-field outlined label="Родительский" v-model="menudata.menu_parent"></v-text-field>
                                 </v-form>
                             </v-card-text>
                             <v-card-actions>
@@ -66,17 +67,21 @@
                                         <v-toolbar color="primary" dark flat>
                                             <v-toolbar-title>Новости</v-toolbar-title>
                                         </v-toolbar>
-                                        <v-text-field label="id" v-model="newsdata.news_id"></v-text-field>
-                                        <v-text-field label="Заголовок" v-model="newsdata.news_name"></v-text-field>
-                                        <v-textarea label="Текст" rows="12" v-model="newsdata.news_text"></v-textarea>
-                                        <v-text-field label="Изображение" v-model="newsdata.news_img"></v-text-field>
+                                        <br>
+                                        <div class="d-flex flex-row">
+                                        <v-text-field outlined class="mr-3" label="id" v-model="newsdata.news_id"></v-text-field>
+                                        <v-text-field outlined label="Изображение" v-model="newsdata.news_img"></v-text-field>
+                                        </div>
+                                        <v-text-field outlined label="Заголовок" v-model="newsdata.news_name"></v-text-field>
+                                        <v-textarea outlined label="Текст" rows="12" v-model="newsdata.news_text"></v-textarea>
+                                        
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
-                                    <v-btn color="success" :disabled="newsAdd || !newsValid">Добавить</v-btn>
+                                    <v-btn @click="insertNews(newsdata)" color="success" :disabled="newsAdd || !newsValid">Добавить</v-btn>
                                     <v-spacer />
-                                    <v-btn color="warning" :disabled="!newsAdd || !newsValid">Изменить</v-btn>
-                                    <v-btn color="error" :disabled="!newsAdd || !newsValid">Удалить</v-btn>
+                                    <v-btn @click="updateNews(newsdata)" color="warning" :disabled="!newsAdd || !newsValid">Изменить</v-btn>
+                                    <v-btn @click="deleteNews(newsdata)" color="error" :disabled="!newsAdd || !newsValid">Удалить</v-btn>
                                 </v-card-actions>
                             </v-card>
                             
@@ -86,7 +91,7 @@
                         <div class="d-flex flex-row">
                             <v-card class="d-flex flex-column pa-3 mr-3" min-width="20%">
                                 <div class="d-flex" v-for="page in getAllPages" :key="page.page_id">
-                                    <a @click.prevent="setPagesForm(page.page_id)">{{ page.page_name }}</a>
+                                    <a @click.prevent="setPagesForm(page.page_menu)">{{ page.page_name }}</a>
                                 </div>
                             </v-card>
                             <v-card min-width="60%" class="mr-3">
@@ -107,10 +112,10 @@
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
-                                    <v-btn color="success" :disabled="pageAdd || !pageValid">Добавить</v-btn>
+                                    <v-btn @click="insertPage(pagedata)" color="success" :disabled="pageAdd || !pageValid">Добавить</v-btn>
                                     <v-spacer />
-                                    <v-btn color="warning" :disabled="!pageAdd || !pageValid">Изменить</v-btn>
-                                    <v-btn color="error" :disabled="!pageAdd || !pageValid">Удалить</v-btn>
+                                    <v-btn @click="updatePage(pagedata)" color="warning" :disabled="!pageAdd || !pageValid">Изменить</v-btn>
+                                    <v-btn @click="deletePage(pagedata)" color="error" :disabled="!pageAdd || !pageValid">Удалить</v-btn>
                                 </v-card-actions>
                             </v-card>
                             <v-card min-width="20%" class="pa-3">
@@ -184,7 +189,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem']),
+    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
     setMenuFrom() {
         this.menudata.menu_id = this.active[0].id
         this.menudata.menu_item = this.active[0].name

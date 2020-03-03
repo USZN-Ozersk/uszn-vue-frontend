@@ -52,7 +52,7 @@ export default {
                 url: path+'private/menu',
                 data: {
                     menuitem: menudata.menu_item,
-                    menuparent: menudata.menu_parent
+                    menuparent: parseInt(menudata.menu_parent, 10) 
                   },
                   headers: {
                     "Token": context.getters.getJwtToken
@@ -73,7 +73,7 @@ export default {
                 method: 'DELETE',
                 url: path+'private/menu',
                 data: {
-                    id: menudata.menu_id
+                    id: parseInt(menudata.menu_id, 10) 
                 },
                 headers: {
                     "Token": context.getters.getJwtToken
@@ -93,9 +93,9 @@ export default {
                 method: 'PUT',
                 url: path+'private/menu',
                 data: {
-                    id: menudata.menu_id,
+                    id: parseInt(menudata.menu_id, 10),
                     menuitem: menudata.menu_item,
-                    menuparent: menudata.menu_parent
+                    menuparent: parseInt(menudata.menu_parent, 10)
                 },
                 headers: {
                     "Token": context.getters.getJwtToken

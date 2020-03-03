@@ -61,6 +61,71 @@ export default {
               .catch(error => {
                 context.commit('setError', error)
               })
+          },
+          insertNews: (context, newsdata) => {
+            axios({
+              method: 'POST',
+              url: path+'private/news',
+              data: {
+                name: newsdata.news_name,
+                text: newsdata.news_text,
+                img: newsdata.news_img
+              },
+              headers: {
+                "Token": context.getters.getJwtToken
+              }
+            })
+            .then(response => {
+              if (response.data.result == "ok") {
+                context.dispatch('loadNewsPage(1)')
+              }
+            })
+            .catch(error => {
+              context.commit('setError', error)
+            })
+          },
+          deleteNews: (context, newsdata) => {
+            axios({
+              method: "DELETE",
+              url: path+'private/news',
+              data: {
+                id: parseInt(newsdata.news_id, 10)
+              },
+              headers: {
+                "Token": context.getters.getJwtToken
+              }
+            })
+            .then(response => {
+              if(response.data.result == "ok") {
+                context.dispatch('loadNewsPage(1)')
+              }
+            })
+            .catch(error => {
+              context.commit('setError', error)
+            })
+          },
+          updateNews: (context, newsdata) => {
+            axios({
+              method: "PUT",
+              url: path+'private/news',
+              data: {
+                id: parseInt(newsdata.news_id, 10),
+                name: newsdata.news_name,
+                text: newsdata.news_text,
+                img: newsdata.news_img
+              },
+              headers: {
+              "Token": context.getters.getJwtToken
+              }
+            })
+            .then(response => {
+              if(response.data.result == "ok") {
+                context.dispatch('loadNewsPage(1)')
+              }
+            })
+            .catch(error => {
+              context.commit('setError', error)
+            })
           }
     }
 }

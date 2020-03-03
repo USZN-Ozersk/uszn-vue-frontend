@@ -4,7 +4,7 @@
       <v-col class="order-1 order-md-0" cols="12" lg="6" md="8">
         <v-card v-if="!getBadVision" flat tile class="d-flex flex-column blue-grey lighten-5 pa-3">
           <h1>{{ getOnePage.page_name }}</h1>
-          <span>{{ getOnePage.page_text }}</span>
+          <div v-html="getOnePage.page_text"></div>
         </v-card>
       </v-col>
       <v-col class="order-0 order-md-1" cols="12" lg="2" md="2">
@@ -30,7 +30,7 @@
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <span class="text-center pb-2" v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'title' : getBvParams.bvFont == 'medium', 'display-1' : getBvParams.bvFont == 'large'}">{{ getOnePage.page_name }}</span>
-            <span v-bind:class="{'body-2' : getBvParams.bvFont == 'small', 'body-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}">{{ getOnePage.page_text }}</span>
+            <span v-bind:class="{'hide' : !getBvParams.bvImages, 'body-2' : getBvParams.bvFont == 'small', 'body-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><div v-html="getOnePage.page_text"></div></span>
           </div>
         </div>
       </v-col>

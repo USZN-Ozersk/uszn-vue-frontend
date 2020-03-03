@@ -36,6 +36,71 @@ export default {
             .then(response => {
                 context.commit('setAllPages', response.data)
             })
-        }
+        },
+        insertPage: (context, pagedata) => {
+            axios({
+            method: 'POST',
+            url: path+'private/page',
+            data: {
+                name: pagedata.page_name,
+                text: pagedata.page_text,
+                menu: parseInt(pagedata.page_menu, 10)
+            },
+            headers: {
+                "Token": context.getters.getJwtToken
+            }
+            })
+            .then(response => {
+              if (response.data.result == "ok") {
+                context.dispatch('loadAllPages')
+              }
+            })
+            .catch(error => {
+              context.commit('setError', error)
+            })
+        },
+        deletePage: (context, pagedata) => {
+            axios({
+              method: "DELETE",
+              url: path+'private/page',
+              data: {
+                id: pagedata.page_id
+              },
+              headers: {
+                "Token": context.getters.getJwtToken
+              }
+            })
+            .then(response => {
+              if(response.data.result == "ok") {
+                context.dispatch('loadAllPages')
+              }
+            })
+            .catch(error => {
+              context.commit('setError', error)
+            })
+          },
+        updatePage: (context, pagedata) => {
+            axios({
+              method: "PUT",
+              url: path+'private/page',
+              data: {
+                id: parseInt(pagedata.page_id, 10),
+                name: pagedata.page_name,
+                text: pagedata.page_text,
+                menu: parseInt(pagedata.page_menu, 10)
+              },
+            headers: {
+              "Token": context.getters.getJwtToken
+            }
+            })
+            .then(response => {
+              if(response.data.result == "ok") {
+                context.dispatch('loadAllPages')
+              }
+            })
+            .catch(error => {
+              context.commit('setError', error)
+            })
+          }
     }
 }

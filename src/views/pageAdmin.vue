@@ -73,7 +73,8 @@
                                         <v-text-field outlined label="Изображение" v-model="newsdata.news_img"></v-text-field>
                                         </div>
                                         <v-text-field outlined label="Заголовок" v-model="newsdata.news_name"></v-text-field>
-                                        <v-textarea outlined label="Текст" rows="12" v-model="newsdata.news_text"></v-textarea>
+                                       <!-- <v-textarea outlined label="Текст" rows="12" v-model="newsdata.news_text"></v-textarea> -->
+                                       <ckeditor :editor="editor" v-model="newsdata.news_text" :config="editorConfig"></ckeditor>
                                         
                                     </v-form>
                                 </v-card-text>
@@ -107,7 +108,8 @@
                                         </div>
                                         
                                         <v-text-field outlined label="Заголовок" v-model="pagedata.page_name"></v-text-field>
-                                        <v-textarea outlined rows="10" label="Текст" v-model="pagedata.page_text"></v-textarea>
+                                        <!-- <v-textarea outlined rows="10" label="Текст" v-model="pagedata.page_text"></v-textarea> -->
+                                        <ckeditor :editor="editor" v-model="pagedata.page_text" :config="editorConfig"></ckeditor>
                                         
                                     </v-form>
                                 </v-card-text>
@@ -139,9 +141,16 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 export default {
     data() {
         return {
+            editor: ClassicEditor,
+            editorData: '<p>Content of the editor.</p>',
+            editorConfig: {
+                // The configuration of the editor.
+            },
             userdata: {
                 login: '',
                 password: ''

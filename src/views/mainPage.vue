@@ -1,5 +1,10 @@
 <template>
   <v-container fluid>
+  <!--  <v-row no-gutters justify="center">
+      <v-col cols="12" lg="10">
+        <a><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="11"></v-img></a>
+      </v-col>
+    </v-row> -->
   <!-- первая строка блоков - информация об управлении -->
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="4" md="5" sm="12">

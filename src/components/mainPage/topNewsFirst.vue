@@ -10,7 +10,7 @@
                 <span class="text-xs-left">{{ getFirstNews[0].news_text }}...</span>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="blue-grey white--text" router-link :to="{ name: 'news', params: {id: getFirstNews[0].news_id}}">Подробнее</v-btn>
+                <v-btn color="#758184" class="white--text" router-link :to="{ name: 'news', params: {id: getFirstNews[0].news_id}}">Подробнее</v-btn>
               </v-card-actions>
             </v-card>
     </v-card>

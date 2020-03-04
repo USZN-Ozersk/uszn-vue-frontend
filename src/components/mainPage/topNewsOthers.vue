@@ -1,7 +1,7 @@
 <template>
   <v-card white raised class="d-flex flex-column align-right pa-3 mr-1 ml-1 mb-2" min-height="100%">
       <div class="d-flex justify-end mb-2">
-      <v-btn color="blue-grey white--text" to="/news/page/1">
+      <v-btn color="#758184" class="white--text" to="/news/page/1">
         Все новости
       </v-btn>
       </div>
@@ -15,7 +15,7 @@
               <span>{{ getFirstNews[n].news_name }}</span>
             </div>
             <div class="d-flex justify-end">  
-              <v-btn small color="blue-grey" class="white--text" router-link :to="{ name: 'news', params: {id: getFirstNews[n].news_id}}">Подробнее</v-btn>
+              <v-btn small color="#758184" class="white--text" router-link :to="{ name: 'news', params: {id: getFirstNews[n].news_id}}">Подробнее</v-btn>
             </div>
           </div>
         </div>

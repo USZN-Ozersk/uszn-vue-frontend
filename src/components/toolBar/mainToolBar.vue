@@ -1,7 +1,7 @@
 <template>
 <v-app-bar app >
   <div class="d-flex align-center" router-link to="/">
-    <router-link to="/"><v-img alt="Vuetify Logo" class="shrink mr-2" contain src="../../assets/gerb.gif" transition="scale-transition" width="40" /></router-link>
+    <router-link to="/"><v-img alt="Vuetify Logo" class="shrink mr-2" contain src="../../assets/gerb.png" transition="scale-transition" width="40" /></router-link>
   </div>
   <v-toolbar-title>
     <router-link style="text-decoration: none;" to="/"><span class="black--text">УСЗН Озерск</span></router-link>
@@ -35,6 +35,7 @@
               </template>
               <span class="headline text-uppercase">Включить режим для слабовидящих</span>
             </v-tooltip>
+            <v-btn color="error" v-if="getAuth" @click="logout">Выход</v-btn>
    
 
 </v-app-bar>
@@ -44,10 +45,10 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
     computed: {
-    ...mapGetters(['getMainMenu', 'getSubMenu']) // Проксируем геттеры vuex
+    ...mapGetters(['getMainMenu', 'getSubMenu', 'getAuth']) // Проксируем геттеры vuex
     },
     methods: {
-    ...mapActions(['setBadVision', 'setDrawer']) // Проксируем действия vuex
+    ...mapActions(['setBadVision', 'setDrawer', 'logout']) // Проксируем действия vuex
     }
 }
 </script>

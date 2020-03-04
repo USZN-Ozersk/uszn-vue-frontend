@@ -5,7 +5,7 @@ export default {
     //Параметры режима для слабовидящих
     bvParams: {
       bvFont: "medium", //Размер шрифта small, medium, large
-      bvBackground: "blue-grey lighten-5", //Цвет фона white, black, blue accent-1, blue-grey lighten-5
+      bvBackground: '#f5cdaa', //"blue-grey lighten-5", //Цвет фона white, black, blue accent-1, blue-grey lighten-5
       bvText: "black--text", //Цвет текста black--text, white--text
       bvColor: "black", //Цвет кнопок и пр. black, white
       bvImages: true //Вкл\Выкл изображения

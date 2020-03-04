@@ -3,7 +3,10 @@
     <drawer></drawer>
     <mainToolBar v-if="!getBadVision"></mainToolBar>
     <mainToolBarBadVision v-if="getBadVision"></mainToolBarBadVision>
-    <v-content v-bind:class="[getBvParams.bvBackground, getBvParams.bvText]">
+    <v-content v-if="getBadVision" v-bind:class="[getBvParams.bvBackground, getBvParams.bvText]">
+      <router-view></router-view>
+    </v-content>
+    <v-content v-if="!getBadVision" style="background-color: #ffeadb">
       <router-view></router-view>
     </v-content>
     <myfooter v-if="!getBadVision"></myfooter>
@@ -41,5 +44,8 @@ export default {
 <style>
 .hide img {
     display: none;
+}
+.size-img img {
+  max-width: 100%;
 }
 </style>

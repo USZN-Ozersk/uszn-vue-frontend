@@ -1,16 +1,16 @@
 <template>
-    <v-card class="d-flex flex-column blue-grey lighten-5 pa-2" flat tile>
+    <div class="d-flex flex-column pa-2" flat tile>
         <div>
-            <span class="text-xs-left subheading font-weight-regular">Адрес:</span><br>
-            <span class="text-xs-left subheading font-weight-light">456783, Челябинская обл., г. Озерск, ул. Космонавтов, 20</span>
+            <span class="text-xs-left subheading font-weight-regular">Адрес:</span>&nbsp;
+            <span class="text-xs-left subheading font-weight-light">456781, Челябинская обл., г. Озерск, ул. Космонавтов, 20</span>
         </div>
         <div> 
-            <span class="text-xs-left subheading font-weight-regular">Контакты: </span><br>
-            <span class="text-xs-left subheading font-weight-light">телефон: (35130)6-66-84, факс: (35130)2-40-59, <a href="mailto:ksz@ozerskadm.ru">ksz@ozerskadm.ru</a></span>
+            <span class="text-xs-left subheading font-weight-regular">Контакты: </span>&nbsp;
+            <span class="text-xs-left subheading font-weight-light">телефон: (35130)5-66-84, факс: (35130)2-40-59, <a href="mailto:ksz@ozerskadm.ru">ksz@ozerskadm.ru</a></span>
         </div>
         <div>
-            <span class="text-xs-left subheading font-weight-regular">Прием граждан: </span><br>
-            <span class="text-xs-left subheading font-weight-light">Понедельник, Четверг 8:30 - 17:00, обед 13:00 - 14:00</span>
+            <span class="text-xs-left subheading font-weight-regular">Прием граждан: </span>&nbsp;
+            <span class="text-xs-left subheading font-weight-light">понедельник, четверг 8:30 - 17:00, перерыв 13:00 - 14:00</span>
         </div>
-    </v-card>
+    </div>
 </template>

@@ -73,9 +73,7 @@
                                         <v-text-field outlined label="Изображение" v-model="newsdata.news_img"></v-text-field>
                                         </div>
                                         <v-text-field outlined label="Заголовок" v-model="newsdata.news_name"></v-text-field>
-                                       <!-- <v-textarea outlined label="Текст" rows="12" v-model="newsdata.news_text"></v-textarea> -->
-                                       <ckeditor :editor="editor" v-model="newsdata.news_text" :config="editorConfig"></ckeditor>
-                                        
+                                        <vue-editor v-model="newsdata.news_text" id="news"></vue-editor>
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
@@ -90,12 +88,12 @@
                     </v-tab-item>
                     <v-tab-item key="3">
                         <div class="d-flex flex-row">
-                            <v-card class="d-flex flex-column pa-3 mr-3" min-width="20%">
+                            <v-card class="d-flex flex-column pa-3 mr-3" min-width="30%">
                                 <div class="d-flex" v-for="page in getAllPages" :key="page.page_id">
                                     <a @click.prevent="setPagesForm(page.page_menu)">{{ page.page_name }}</a>
                                 </div>
                             </v-card>
-                            <v-card min-width="60%" class="mr-3">
+                            <v-card min-width="70%" class="mr-3">
                                 <v-card-text>
                                     <v-form>
                                         <v-toolbar color="primary" dark flat>
@@ -106,11 +104,8 @@
                                             <v-text-field class="mr-3" outlined label="id" v-model="pagedata.page_id"></v-text-field>
                                             <v-text-field outlined label="Пункт меню" v-model="pagedata.page_menu"></v-text-field>
                                         </div>
-                                        
                                         <v-text-field outlined label="Заголовок" v-model="pagedata.page_name"></v-text-field>
-                                        <!-- <v-textarea outlined rows="10" label="Текст" v-model="pagedata.page_text"></v-textarea> -->
-                                        <ckeditor :editor="editor" v-model="pagedata.page_text" :config="editorConfig"></ckeditor>
-                                        
+                                        <vue-editor v-model="pagedata.page_text" id="page"></vue-editor>
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
@@ -120,19 +115,10 @@
                                     <v-btn @click="deletePage(pagedata)" color="error" :disabled="!pageAdd || !pageValid">Удалить</v-btn>
                                 </v-card-actions>
                             </v-card>
-                            <v-card min-width="20%" class="pa-3">
-                                <v-form>
-                                    <v-toolbar color="primary" dark flat>
-                                        <v-toolbar-title>Файлы</v-toolbar-title>
-                                    </v-toolbar>
-                                    <br>
-                                    <v-file-input full-width outlined label="Загрузить файл"></v-file-input>
-                                </v-form>
-                            </v-card>
                         </div>
                     </v-tab-item>
                 </v-tabs>
-                <v-btn @click="logout">Выход</v-btn>
+                
                </div>
            </v-col>
        </v-row>
@@ -141,16 +127,13 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import { VueEditor } from "vue2-editor";
 export default {
+    components: {
+        VueEditor
+    },
     data() {
         return {
-            editor: ClassicEditor,
-            editorData: '<p>Content of the editor.</p>',
-            editorConfig: {
-                // The configuration of the editor.
-            },
             userdata: {
                 login: '',
                 password: ''
@@ -177,7 +160,7 @@ export default {
         }
     },
   computed: {
-    ...mapGetters(['getAuth', 'getAuthError', 'getTreeMenu', 'getNewsPage', 'getOneNews', 'getAllPages', 'getOnePage']),
+    ...mapGetters(['getAuth', 'getAuthError', 'getTreeMenu', 'getNewsPage', 'getOneNews', 'getAllPages', 'getOnePage', 'getJwtToken']),
     menuValid() {
         return this.menudata.menu_item != ''
     },
@@ -198,7 +181,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['authorize', 'logout', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
+    ...mapActions(['authorize', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
     setMenuForm() {
         if (this.active[0]) {
             this.menudata.menu_id = this.active[0].id

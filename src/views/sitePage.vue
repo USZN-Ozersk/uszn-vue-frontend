@@ -2,15 +2,15 @@
   <v-container fluid>
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col class="order-1 order-md-0" cols="12" lg="6" md="8">
-        <v-card v-if="!getBadVision" flat tile class="d-flex flex-column blue-grey lighten-5 pa-3">
+        <v-card v-if="!getBadVision" class="size-img d-flex flex-column pa-3 mr-3 ml-3">
           <h1>{{ getOnePage.page_name }}</h1>
           <div v-html="getOnePage.page_text"></div>
         </v-card>
       </v-col>
       <v-col class="order-0 order-md-1" cols="12" lg="2" md="2">
-      <v-card v-if="getSubMenu(this.id) != ''" class="d-flex flex-column blue-grey lighten-5">
+      <v-card v-if="getSubMenu(this.id) != ''" class="d-flex flex-column">
         <span class="subtitle-1 font-weight-medium pl-3 pr-3 pt-3">Навигация</span>
-      <v-list class="blue-grey lighten-5">
+      <v-list>
       <v-list-item v-for="menu in getSubMenu(this.id)" :key="menu.menu_id" router-link :to="{ name: 'page', params: { id: menu.menu_id }}" @click="setDrawer(false)">
         <v-list-item-content>
           <v-list-item-title><span>{{ menu.menu_item }}</span></v-list-item-title>
@@ -30,7 +30,7 @@
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <span class="text-center pb-2" v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'title' : getBvParams.bvFont == 'medium', 'display-1' : getBvParams.bvFont == 'large'}">{{ getOnePage.page_name }}</span>
-            <span v-bind:class="{'hide' : !getBvParams.bvImages, 'body-2' : getBvParams.bvFont == 'small', 'body-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><div v-html="getOnePage.page_text"></div></span>
+            <span class="size-img" v-bind:class="{'hide' : !getBvParams.bvImages, 'body-2' : getBvParams.bvFont == 'small', 'body-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><div v-html="getOnePage.page_text"></div></span>
           </div>
         </div>
       </v-col>

@@ -6,7 +6,7 @@
     <v-content v-if="getBadVision" v-bind:class="[getBvParams.bvBackground, getBvParams.bvText]">
       <router-view></router-view>
     </v-content>
-    <v-content v-if="!getBadVision" style="background-color: #ffeadb">
+    <v-content v-if="!getBadVision" style="background-color: #d4cdc4">
       <router-view></router-view>
     </v-content>
     <myfooter v-if="!getBadVision"></myfooter>

@@ -73,7 +73,7 @@
                                         <v-text-field outlined label="Изображение" v-model="newsdata.news_img"></v-text-field>
                                         </div>
                                         <v-text-field outlined label="Заголовок" v-model="newsdata.news_name"></v-text-field>
-                                        <vue-editor v-model="newsdata.news_text" id="news"></vue-editor>
+                                        <vue-editor useCustomImageHandler @image-added="handleImageAdded" v-model="newsdata.news_text" id="news"></vue-editor>
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
@@ -128,6 +128,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex';
 import { VueEditor } from "vue2-editor";
+import axios from "axios";
 export default {
     components: {
         VueEditor
@@ -182,6 +183,26 @@ export default {
   },
   methods: {
     ...mapActions(['authorize', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
+    handleImageAdded: function(file, Editor, cursorLocation, resetUploader) {
+        var formData = new FormData();
+        formData.append('file', file);
+        axios({
+            method: "POST",
+            url: "http://127.0.0.1:8080/api/v1/private/upload",
+            data: formData,
+            headers: {
+                "Token": this.getJwtToken
+            }
+        })
+        .then(result => {
+          let url = result.data.url; // Get url from response
+          Editor.insertEmbed(cursorLocation, "image", url);
+          resetUploader();
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
     setMenuForm() {
         if (this.active[0]) {
             this.menudata.menu_id = this.active[0].id

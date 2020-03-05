@@ -196,7 +196,13 @@ export default {
         })
         .then(result => {
           let url = result.data.url; // Get url from response
-          Editor.insertEmbed(cursorLocation, "image", url);
+          let file = url.split("/")[(url.split("/")).length-1]
+          let filetype = file.split(".")[(file.split(".")).length-1]
+          if (filetype == "jpg" || filetype == "jpeg" || filetype == "png" || filetype == "bmp" || filetype == "gif" || filetype == "gif") {
+            Editor.insertEmbed(cursorLocation, "image", url);
+          } else {
+            Editor.insertText(cursorLocation, file, "link", url);
+          }
           resetUploader();
         })
         .catch(err => {

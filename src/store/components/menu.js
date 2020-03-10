@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const path = "http://localhost:8080/api/v1/"
+const path = "https://usznozersk.ru:81/api/v1/"
 
 export default {
     state: {

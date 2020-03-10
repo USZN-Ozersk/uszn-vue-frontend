@@ -170,7 +170,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['authorize', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
+    ...mapActions(['authorize', 'setError', 'loadNewsPage', 'loadOneNews', 'loadAllPages', 'loadOnePage', 'insertMenuItem', 'deleteMenuItem', 'updateMenuItem', 'insertNews', 'deleteNews', 'updateNews', 'insertPage', 'deletePage', 'updatePage']),
     handleImageAdded: function(file, Editor, cursorLocation, resetUploader) {
         var formData = new FormData();
         formData.append('file', file);
@@ -194,7 +194,7 @@ export default {
           resetUploader();
         })
         .catch(err => {
-          console.log(err);
+          this.setError(err)
         })
     },
     clearMenu() {

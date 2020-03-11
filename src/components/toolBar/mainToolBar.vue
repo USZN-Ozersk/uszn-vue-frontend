@@ -15,11 +15,11 @@
    
             <v-menu offset-y open-on-hover v-for="menu in getMainMenu" :key="menu.menu_id">
                 <template v-slot:activator="{ on }">
-                <v-btn class="hidden-md-and-down" text :to="{ name: 'page', params: { id: menu.menu_id }}" v-on="on">{{ menu.menu_item }}</v-btn>
+                <v-btn class="hidden-md-and-down" text :to="setURL(menu)" v-on="on">{{ menu.menu_item }}</v-btn>
                 </template>
                 <v-list class="pa-0">
                   <v-list-item-group>
-                    <v-list-item v-for="submenu in getSubMenu(menu.menu_id)" :key="submenu.menu_id" router-link :to="{ name: 'page', params: { id: submenu.menu_id }}">
+                    <v-list-item v-for="submenu in getSubMenu(menu.menu_id)" :key="submenu.menu_id" router-link :to="setURL(submenu)">
                       <v-list-item-content>
                         <v-list-item-title>{{ submenu.menu_item }}</v-list-item-title>
                       </v-list-item-content>  
@@ -48,7 +48,10 @@ export default {
     ...mapGetters(['getMainMenu', 'getSubMenu', 'getAuth']) // Проксируем геттеры vuex
     },
     methods: {
-    ...mapActions(['setBadVision', 'setDrawer', 'logout']) // Проксируем действия vuex
-    }
+    ...mapActions(['setBadVision', 'setDrawer', 'logout']), // Проксируем действия vuex
+    setURL(menu) {
+        if (menu.custom_link == false) { return '/page/'+menu.menu_id } else { return menu.custom_link_value }
+    },
+  }
 }
 </script>

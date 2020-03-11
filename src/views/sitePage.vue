@@ -11,7 +11,7 @@
       <v-card v-if="getSubMenu(this.id) != ''" class="d-flex flex-column">
         <span class="subtitle-1 font-weight-medium pl-3 pr-3 pt-3">Навигация</span>
       <v-list>
-      <v-list-item v-for="menu in getSubMenu(this.id)" :key="menu.menu_id" router-link :to="{ name: 'page', params: { id: menu.menu_id }}" @click="setDrawer(false)">
+      <v-list-item v-for="menu in getSubMenu(this.id)" :key="menu.menu_id" router-link :to="setURL(menu)" @click="setDrawer(false)">
         <v-list-item-content>
           <v-list-item-title><span>{{ menu.menu_item }}</span></v-list-item-title>
         </v-list-item-content>
@@ -24,7 +24,7 @@
       <v-col cols="12" lg="8">
         <div class="d-flex flex-column">
           <div class="d-flex flex-row align-self-center pb-3">
-            <v-btn tile :color="getBvParams.bvColor" class="ml-1" outlined v-for="menu in getSubMenu(this.id)" :key="menu.menu_id" :to="{ name: 'page', params: { id: menu.menu_id }}">
+            <v-btn tile :color="getBvParams.bvColor" class="ml-1" outlined v-for="menu in getSubMenu(this.id)" :key="menu.menu_id" :to="setURL(menu)">
                 <span v-bind:class="{'caption font-weight-medium' : getBvParams.bvFont == 'small', 'body-2' : getBvParams.bvFont == 'medium', 'subheading font-weight-medium' : getBvParams.bvFont == 'large'}">{{ menu.menu_item }}</span>
             </v-btn>
           </div>
@@ -51,7 +51,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['loadOnePage'])
+    ...mapActions(['loadOnePage']),
+    setURL(menu) {
+      if (menu.custom_link == false) { return '/page/'+menu.menu_id } else { return menu.custom_link_value }
+    },
   },
   created() {
     this.loadOnePage(this.id);

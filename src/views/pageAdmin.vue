@@ -39,6 +39,8 @@
                                     <v-text-field outlined label="id" v-model="menudata.menu_id"></v-text-field>
                                     <v-text-field outlined label="Название" v-model="menudata.menu_item"></v-text-field>
                                     <v-text-field outlined label="Родительский" v-model="menudata.menu_parent"></v-text-field>
+                                    <v-switch v-model="menudata.custom_link" label="Особый пункт меню"></v-switch>
+                                    <v-text-field outlined :disabled="!menudata.custom_link" label="Ссылка на пункт меню" v-model="menudata.custom_link_value"></v-text-field>
                                 </v-form>
                             </v-card-text>
                             <v-card-actions>
@@ -130,7 +132,9 @@ export default {
             menudata: {
                 menu_id: '',
                 menu_item: '',
-                menu_parent: ''
+                menu_parent: '',
+                custom_link: false,
+                custom_link_value: ''
             },
             newsdata: {
                 news_id: '',
@@ -211,6 +215,8 @@ export default {
             this.menudata.menu_id = this.active[0].id
             this.menudata.menu_item = this.active[0].name
             this.menudata.menu_parent = this.active[0].parent
+            this.menudata.custom_link = this.active[0].custom
+            this.menudata.custom_link_value = this.active[0].custom_value
         }
     },
     async setNewsForm(id) {

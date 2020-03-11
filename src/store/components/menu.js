@@ -22,7 +22,7 @@ export default {
             }
 
             function setTree(element) {
-               var a = {id: element.menu_id, name: element.menu_item, parent: element.menu_parent, children: []}
+               var a = {id: element.menu_id, name: element.menu_item, parent: element.menu_parent, custom: element.custom_link, custom_value: element.custom_link_value, children: []}
                 for (var item in menu) {
                     if (menu[item].menu_parent == element.menu_id) {
                        a.children.push(setTree(menu[item]))    
@@ -30,7 +30,7 @@ export default {
                 }
                 return a
             }
-
+           
            return result
         }
     },
@@ -54,7 +54,9 @@ export default {
                 url: path+'private/menu',
                 data: {
                     menuitem: menudata.menu_item,
-                    menuparent: parseInt(menudata.menu_parent, 10) 
+                    menuparent: parseInt(menudata.menu_parent, 10),
+                    customlink: menudata.custom_link,
+                    customlinkvalue: menudata.custom_link_value
                   },
                   headers: {
                     "Token": context.getters.getJwtToken
@@ -97,7 +99,9 @@ export default {
                 data: {
                     id: parseInt(menudata.menu_id, 10),
                     menuitem: menudata.menu_item,
-                    menuparent: parseInt(menudata.menu_parent, 10)
+                    menuparent: parseInt(menudata.menu_parent, 10),
+                    customlink: menudata.custom_link,
+                    customlinkvalue: menudata.custom_link_value
                 },
                 headers: {
                     "Token": context.getters.getJwtToken

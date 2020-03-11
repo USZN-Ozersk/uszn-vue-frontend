@@ -11,7 +11,7 @@
       </v-list>
 
     <v-list class="pt-0">
-      <v-list-item v-for="menu in getMainMenu" :key="menu.menu_id" router-link :to="{ name: 'page', params: { id: menu.menu_id }}" @click="setDrawer(false)">
+      <v-list-item v-for="menu in getMainMenu" :key="menu.menu_id" router-link :to="setURL(menu)" @click="setDrawer(false)">
         <v-list-item-content>
           <v-list-item-title><span class="title">{{ menu.menu_item }}</span></v-list-item-title>
         </v-list-item-content>
@@ -35,7 +35,10 @@ export default {
         },
     },
     methods: {
-        ...mapActions(['setDrawer']),
+      ...mapActions(['setDrawer']),
+      setURL(menu) {
+        if (menu.custom_link == false) { return '/page/'+menu.menu_id } else { return menu.custom_link_value }
+      },
     },
 }
 </script>

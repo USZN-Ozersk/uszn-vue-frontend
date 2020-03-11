@@ -2,6 +2,7 @@
 node_modules
 /dist
 nginx
+src/settings.json
 
 # local env files
 .env.local

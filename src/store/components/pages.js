@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const path = "https://usznozersk.ru:81/api/v1/"
+import settings from '../../settings.json'
+
+const path = settings.url
 
 export default {
     state: {

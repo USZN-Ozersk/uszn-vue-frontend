@@ -2,8 +2,8 @@ FROM node:current as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
-RUN npm i --no-package-lock
-RUN npm i @vue/cli --no-package-lock -g
+RUN npm install
+RUN npm install @vue/cli -g
 COPY . /app
 RUN npm run build
 

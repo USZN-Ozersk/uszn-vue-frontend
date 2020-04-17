@@ -42,6 +42,13 @@
         <topNewsBV></topNewsBV>
       </v-col>
     </v-row>
+
+    <!-- Третья строка блоков - Баннеры -->
+    <v-row class="pt-3" no-gutters justify="center" v-if="!getBadVision">
+      <v-col cols="12" lg="10" sm="12">
+        <banners></banners>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -58,6 +65,7 @@ components: {
   topNewsOthers: () => import('@/components/mainPage/topNewsOthers'), // Новости на главной странице
   topNewsBV: () => import('@/components/mainPage/topNewsBV'), // Новости на главной странице для слабовидящих
   topBoss: () => import('@/components/mainPage/topBoss'), // Инфо о начальнике
+  banners:() => import('@/components/mainPage/banners'),
 },
 computed: {
   ...mapGetters(['getBadVision', 'getBvParams']),

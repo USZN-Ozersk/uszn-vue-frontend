@@ -32,6 +32,11 @@ const routes = [
     name: 'pageAdmin',
     component: () => import('../views/pageAdmin.vue'),
     props: true
+  },
+  {
+    path: '/officials',
+    name: 'officials',
+    component: () => import('../views/customPages/officials.vue'),
   }
 ]
 

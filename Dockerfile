@@ -1,4 +1,4 @@
-FROM node:alpine3.10 as build
+FROM node:lts-alpine3.9 as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json

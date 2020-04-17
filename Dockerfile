@@ -1,10 +1,9 @@
-FROM node:alpine as build
+FROM node:latest as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-RUN npm install
-RUN npm install @vue/cli -g
+RUN npm i --no-package-lock
+RUN npm i @vue/cli -g --no-package-lock
 COPY . /app
 RUN npm run build
 

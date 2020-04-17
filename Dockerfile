@@ -1,9 +1,9 @@
-FROM node:alpine as build
+FROM node:current as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
-RUN npm i --no-package-lock
-RUN npm i @vue/cli -g --no-package-lock
+RUN npm i
+RUN npm i @vue/cli -g
 COPY . /app
 RUN npm run build
 

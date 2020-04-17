@@ -1,9 +1,9 @@
-FROM node:current as build
+FROM node:alpine3.10 as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install
-RUN npm install @vue/cli -g
+#RUN npm install @vue/cli -g
 COPY . /app
 RUN npm run build
 

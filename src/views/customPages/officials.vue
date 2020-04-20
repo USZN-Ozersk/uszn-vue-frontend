@@ -40,7 +40,7 @@
                 <v-card tile flat min-height="100%" class="d-flex flex-column" v-bind:class="getBvParams.bvBackground">
                     <v-card-title v-bind:class="{'headline' : getBvParams.bvFont == 'small', 'display-1' : getBvParams.bvFont == 'medium', 'display-2' : getBvParams.bvFont == 'large'}"><span v-bind:class="getBvParams.bvText">Солодовникова<br>Лилия<br>Владимировна</span></v-card-title>
                     <v-card-subtitle v-bind:class="{'subtitle-1' : getBvParams.bvFont == 'small', 'title' : getBvParams.bvFont == 'medium', 'headline' : getBvParams.bvFont == 'large'}"><span v-bind:class="getBvParams.bvText">Начальник Управления</span></v-card-subtitle>
-                    <v-card-text v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'subtitle-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><span v-bind:class="getBvParams.bvText">Образование: высшее.<br>В органах местного самоуправления Озерского городского округа работает с ??? года.<br><br>
+                    <v-card-text v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'subtitle-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><span v-bind:class="getBvParams.bvText">Образование: высшее.<br>В органах местного самоуправления Озерского городского округа работает с 1994 года.<br><br>
                     Телефон: (35130) 4-53-32<br><br>
                     Прием по личным вопросам каждый вторник с 9:00 до 17:00 по предварительной записи.<br>Запись по телефону: (35130)5-66-84.</span></v-card-text>
                 </v-card>

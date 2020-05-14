@@ -3,7 +3,7 @@
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col class="order-1 order-md-0" cols="12" lg="6" md="8">
         <v-card v-if="!getBadVision" class="size-img d-flex flex-column pa-3 mr-3 ml-3">
-          <h1>{{ getOnePage.page_name }}</h1>
+          <h1 style="text-align: center;">{{ getOnePage.page_name }}</h1>
           <div v-html="getOnePage.page_text"></div>
         </v-card>
       </v-col>
@@ -61,3 +61,14 @@ export default {
   }
 }
 </script>
+
+<style>
+.ql-align-center {
+  text-align: center;
+}
+
+.ql-align-justify {
+  text-align: justify;
+}
+
+</style>

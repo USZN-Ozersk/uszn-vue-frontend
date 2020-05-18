@@ -1,8 +1,9 @@
 <template>
   <v-container fluid>
+    <mysnackbar></mysnackbar>
   <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
-        <a><v-card hover><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card></a>
+        <a><v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card></a>
       </v-col>
     </v-row>
   <!-- первая строка блоков - информация об управлении -->
@@ -66,6 +67,7 @@ components: {
   topNewsBV: () => import('@/components/mainPage/topNewsBV'), // Новости на главной странице для слабовидящих
   topBoss: () => import('@/components/mainPage/topBoss'), // Инфо о начальнике
   banners:() => import('@/components/mainPage/banners'),
+  mysnackbar:() => import('@/components/mainPage/snackbar'),
 },
 computed: {
   ...mapGetters(['getBadVision', 'getBvParams']),

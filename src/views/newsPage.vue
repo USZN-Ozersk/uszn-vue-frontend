@@ -5,7 +5,7 @@
                 <v-card class="d-flex flex-column">
                     <v-img v-bind:src="getOneNews.news_img" aspect-ratio="2"/>
                     <v-card-title>{{ getOneNews.news_name }}</v-card-title>
-                    <div v-html="getOneNews.news_text"></div>
+                    <div class="ml-4 mr-4" v-html="getOneNews.news_text"></div>
                 </v-card>
             </v-col>
             <v-col cols="12" lg="3">

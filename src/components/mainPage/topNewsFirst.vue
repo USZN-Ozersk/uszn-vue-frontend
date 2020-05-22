@@ -4,7 +4,7 @@
       <v-card class="d-flex flex-column" tile flat>
               <v-img v-bind:src="getFirstNews[0].news_img" aspect-ratio="2.5"/>
               <v-card-title>
-                  <span class="text-xs-left">{{ getFirstNews[0].news_name }}</span>
+                  <span class="text-xs-left text-truncate">{{ getFirstNews[0].news_name }}</span>
               </v-card-title>
               <v-card-text>
                 <span class="text-xs-left">{{ getFirstNews[0].news_text }}...</span>

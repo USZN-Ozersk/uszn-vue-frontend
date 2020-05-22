@@ -3,7 +3,7 @@
     <mysnackbar></mysnackbar>
   <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
-        <a><v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card></a>
+        <a href="/victory75years"><v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card></a>
       </v-col>
     </v-row>
   <!-- первая строка блоков - информация об управлении -->

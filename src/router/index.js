@@ -43,6 +43,11 @@ const routes = [
     name: 'familychilds',
     component: () => import('../views/customPages/familychilds.vue'),
   },
+  {
+    path: '/victory75years',
+    name: 'victory75years',
+    component: () => import('../views/customPages/victory75years.vue'),
+  },
 ]
 
 const router = new VueRouter({

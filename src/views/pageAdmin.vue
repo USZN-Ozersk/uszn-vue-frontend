@@ -167,7 +167,7 @@ export default {
         return this.newsdata.news_id != ''
     },
     pageValid() {
-        return this.pagedata.page_name != '' && this.pagedata.page_text != '' && this.pagedata.page_menu != ''
+        return this.pagedata.page_name != '' && this.pagedata.page_text != ''
     },
     pageAdd() {
         return this.pagedata.page_id != ''
@@ -219,15 +219,15 @@ export default {
             this.menudata.custom_link_value = this.active[0].custom_value
         }
     },
-    async setNewsForm(id) {
-        await this.loadOneNews(id)
+    setNewsForm(id) {
+        this.loadOneNews(id)
         this.newsdata.news_id = this.getOneNews.news_id
         this.newsdata.news_name = this.getOneNews.news_name
         this.newsdata.news_text = this.getOneNews.news_text
         this.newsdata.news_img = this.getOneNews.news_img
     },
-    async setPagesForm(id) {
-        await this.loadOnePage(id)
+    setPagesForm(id) {
+        this.loadOnePage(id)
         this.pagedata.page_id = this.getOnePage.page_id
         this.pagedata.page_name = this.getOnePage.page_name
         this.pagedata.page_text = this.getOnePage.page_text

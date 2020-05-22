@@ -37,7 +37,12 @@ const routes = [
     path: '/officials',
     name: 'officials',
     component: () => import('../views/customPages/officials.vue'),
-  }
+  },
+  {
+    path: '/familychilds',
+    name: 'familychilds',
+    component: () => import('../views/customPages/familychilds.vue'),
+  },
 ]
 
 const router = new VueRouter({

@@ -15,11 +15,29 @@
             </v-card>
         </v-col>
     </v-row>
+
+    <v-row justify="center" v-if="getBadVision">
+        <v-col cols="12" lg="8" sm="12">
+            <p class="display-1 text-center pa-4">Перечень пособий семьям с детьми</p>
+            <div v-for="item in items" :key="item.id">
+                <p v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'subtitle-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><a :href="'#'+item.id"><span v-bind:class="getBvParams.bvText">{{item.name}}</span></a></p>
+            </div>
+            <div v-for="item in items" :key="item.id">
+                <p v-bind:class="{'title' : getBvParams.bvFont == 'small', 'headline' : getBvParams.bvFont == 'medium', 'display-1' : getBvParams.bvFont == 'large'}"><a :name="item.id"><span v-bind:class="getBvParams.bvText">{{ item.name }}</span></a></p>
+                <p v-bind:class="{'subtitle-2' : getBvParams.bvFont == 'small', 'subtitle-1' : getBvParams.bvFont == 'medium', 'title' : getBvParams.bvFont == 'large'}"><span v-html="item.text"></span></p>
+                <hr class="mt-3 mb-3">
+            </div>
+        </v-col>
+    </v-row>
 </v-container>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
+    computed: {
+    ...mapGetters(['getBadVision', 'getBvParams'])
+    },
     data () {
         return {
             items: [

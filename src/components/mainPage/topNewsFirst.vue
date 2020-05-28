@@ -7,7 +7,7 @@
                   <span class="text-xs-left text-truncate">{{ getFirstNews[0].news_name }}</span>
               </v-card-title>
               <v-card-text>
-                <span class="text-xs-left" v-html="getFirstNews[0].news_text">...</span>
+                <span class="text-xs-left">{{ getFirstNews[0].news_text }}...</span>
               </v-card-text>
               <v-card-actions>
                 <v-btn color="#758184" class="white--text" router-link :to="{ name: 'news', params: {id: getFirstNews[0].news_id}}">Подробнее</v-btn>

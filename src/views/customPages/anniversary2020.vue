@@ -57,6 +57,17 @@
         </v-col>
     </v-row>
     <v-row no-gutters justify="center" v-if="!getBadVision">
+        <v-col cols="12" lg="4" md="5" sm="12" class="mb-2">
+          <v-card>
+            <v-img src="../../assets/photo/7.jpg"></v-img>
+          </v-card>
+        </v-col>
+        <v-col cols="12" lg="6" md="7" sm="12" class="mb-2">
+          <v-card class="ml-md-2 pa-4" height="100%">
+          </v-card>
+        </v-col>
+    </v-row>
+    <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="10" md="12">
         <v-card class="pa-3">
           <div class="text-center"><span class="headline">УСЗН в цифрах 2019-2020</span></div>

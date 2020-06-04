@@ -48,6 +48,11 @@ const routes = [
     name: 'victory75years',
     component: () => import('../views/customPages/victory75years.vue'),
   },
+  {
+    path: '/anniversary2020',
+    name: 'anniversary2020',
+    component: () => import('../views/customPages/anniversary2020'),
+  },
 ]
 
 const router = new VueRouter({

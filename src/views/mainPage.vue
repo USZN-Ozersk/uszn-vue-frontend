@@ -7,11 +7,18 @@
       </v-col>
    </v-row>
   
-  <v-row no-gutters justify="center">
+ <!-- <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
         <a href="/victory75years"><v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card></a>
       </v-col>
+    </v-row> -->
+
+    <v-row no-gutters justify="center">
+      <v-col cols="12" lg="10">
+        <a href="/anniversary2020"><v-card><v-img alt="2020" src="../assets/baner2.jpg" aspect-ratio="7"></v-img></v-card></a>
+      </v-col>
     </v-row>
+
   <!-- первая строка блоков - информация об управлении -->
     <v-row no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="4" md="5" sm="12">

@@ -1,11 +1,11 @@
 <template>
    <v-container fluid>
    <!-- <mysnackbar></mysnackbar> -->
-   <!-- <v-row no-gutters justify="center">
+   <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
         <div class="text-center mb-2"><v-sheet color="red lighten-2" class="white--text">Сайт работает в тестовом режиме.</v-sheet></div>
       </v-col>
-   </v-row> -->
+   </v-row>
   
   <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
@@ -13,11 +13,11 @@
       </v-col>
     </v-row>
 
-    <v-row no-gutters justify="center">
+    <!-- <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
         <a href="/anniversary2020"><v-card><v-img alt="2020" src="../assets/baner2.jpg" aspect-ratio="7"></v-img></v-card></a>
       </v-col>
-    </v-row>
+    </v-row> -->
 
   <!-- первая строка блоков - информация об управлении -->
     <v-row no-gutters justify="center" v-if="!getBadVision">

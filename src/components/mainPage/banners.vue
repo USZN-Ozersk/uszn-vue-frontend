@@ -21,8 +21,8 @@ export default {
                 },
                 {
                     id: 2,
-                    name: "banner2.jpg",
-                    url: "https://rosmintrud.ru/ministry/programms/demography",
+                    name: "banner2.png",
+                    url: "/page/29",
                     alt: "Национальный проект «Демография»",
                 },
                 {

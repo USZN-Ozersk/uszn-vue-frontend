@@ -9,7 +9,7 @@
   
   <v-row no-gutters justify="center">
       <v-col cols="12" lg="10">
-        <a href="/victory75years"><v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card></a>
+        <v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card>
       </v-col>
     </v-row>
 

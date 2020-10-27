@@ -11,6 +11,11 @@
       <v-col cols="12" lg="10">
         <v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card>
       </v-col>
+   <!--   <v-col cols="2">
+        
+          <bannerPos></bannerPos>
+        
+      </v-col> -->
     </v-row>
 
     <!-- <v-row no-gutters justify="center">
@@ -94,6 +99,7 @@ components: {
   topBoss: () => import('@/components/mainPage/topBoss'), // Инфо о начальнике
   shortInfo: () => import('@/components/mainPage/shortInfo'),
   banners:() => import('@/components/mainPage/banners'),
+  //bannerPos:() => import('@/components/mainPage/bannerPos'),
   //mysnackbar:() => import('@/components/mainPage/snackbar'),
 },
 computed: {

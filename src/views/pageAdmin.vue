@@ -180,7 +180,7 @@ export default {
         formData.append('file', file);
         axios({
             method: "POST",
-            url: "https://usznozersk.ru:81/api/v1/private/upload",
+            url: "https://usznozersk.ru/api/v1/private/upload",
             data: formData,
             headers: {
                 "Token": this.getJwtToken

@@ -39,9 +39,9 @@ export default {
                 },
                 {
                     id: 5,
-                    name: "banner5.jpg",
-                    url: "http://letters.kremlin.ru/",
-                    alt: "Администрация Президента Российской Федерации",
+                    name: "banner9.jpg",
+                    url: "http://ozerskadm.ru/regulatory/anticorruption/",
+                    alt: "Противодействие коррупции",
                 },
                 {
                     id: 6,

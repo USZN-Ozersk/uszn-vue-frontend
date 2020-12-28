@@ -1,7 +1,6 @@
 <template>
     <div class="ml-5 mt-2">
-        
-        <div id="pos-banner-lock"> 
+                <div id="pos-banner-lock"> 
             <div class="pos-banner b2"> 
                 <div class="b2__content"> 
                     <div class="pos-banner__text b2__text"> Расскажите о Вашей проблеме - решим ее вместе! 

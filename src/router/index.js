@@ -44,6 +44,11 @@ const routes = [
     component: () => import('../views/customPages/familychilds.vue'),
   },
   {
+    path: '/veterans',
+    name: 'veterans',
+    component: () => import('../views/customPages/veterans.vue'),
+  },
+  {
     path: '/anniversary2020',
     name: 'anniversary2020',
     component: () => import('../views/customPages/anniversary2020'),

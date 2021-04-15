@@ -66,7 +66,7 @@
     <v-row class="pt-2" no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="10" sm="12">
         <div class="d-flex pa-2 align-self-center">
-        <span class="title font-weight-light">Управление социальной защиты населения в цифрах: назначение детских пособий по состоянию на 1 января 2021 года.</span>
+        <span class="title font-weight-light">Управление социальной защиты населения в цифрах: реализация национального проекта "Демография" по состоянию на 01.01.2021.</span>
         </div>
         <shortInfo></shortInfo>
       </v-col>

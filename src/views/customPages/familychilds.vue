@@ -4,7 +4,7 @@
         <v-col cols="12" lg="8" sm="12">
             <v-card>
                 <p class="display-1 text-center pa-4">Перечень пособий семьям с детьми</p>
-        <v-expansion-panels accordion hover>
+        <v-expansion-panels focusable inset hover>
                   <v-expansion-panel v-for="item in items" :key="item.id">
         <v-expansion-panel-header>{{ item.name }}</v-expansion-panel-header>
         <v-expansion-panel-content>

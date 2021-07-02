@@ -72,7 +72,17 @@
       </v-col>
     </v-row>
 
-    <!-- Четвертая строка блоков - Баннеры -->
+    <!-- Четвертая строка блоков - Сироты -->
+    <v-row class="pt-2" no-gutters justify="center" v-if="!getBadVision">
+      <v-col cols="12" lg="10" sm="12">
+        <div class="d-flex pa-2 align-self-center">
+        <span class="title font-weight-light">Им очень нужна семья:</span>
+        </div>
+        <sChilds></sChilds>
+      </v-col>
+    </v-row>
+
+    <!-- Пятая строка блоков - Баннеры -->
     <v-row class="pt-2" no-gutters justify="center" v-if="!getBadVision">
       <v-col cols="12" lg="10" sm="12">
         <div class="d-flex pa-2 align-self-center">
@@ -98,7 +108,8 @@ components: {
   topNewsBV: () => import('@/components/mainPage/topNewsBV'), // Новости на главной странице для слабовидящих
   topBoss: () => import('@/components/mainPage/topBoss'), // Инфо о начальнике
   shortInfo: () => import('@/components/mainPage/shortInfo'),
-  banners:() => import('@/components/mainPage/banners'),
+  sChilds: () => import('@/components/mainPage/childs'),
+  banners:() => import('@/components/mainPage/banners')
   //bannerPos:() => import('@/components/mainPage/bannerPos'),
   //mysnackbar:() => import('@/components/mainPage/snackbar'),
 },

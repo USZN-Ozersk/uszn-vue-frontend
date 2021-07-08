@@ -12,7 +12,7 @@
             <span v-html="item.text"></span>
             <span v-if="item.docfiles!=null">
                 <span v-for="file in item.docfiles" :key="file.id">
-                    <a :href="file.filename">{{file.name}}</a>
+                    <a :href="file.filename">{{file.name}}</a><br>
                 </span>
             </span>
         </v-expansion-panel-content>

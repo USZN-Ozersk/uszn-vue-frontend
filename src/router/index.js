@@ -53,6 +53,11 @@ const routes = [
     name: 'anniversary2020',
     component: () => import('../views/customPages/anniversary2020'),
   },
+  {
+    path: '/ask',
+    name: 'ask',
+    component: () => import('../views/customPages/ask'),
+  },
 ]
 
 const router = new VueRouter({

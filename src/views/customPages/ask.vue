@@ -4,7 +4,8 @@
            <v-col cols="12" lg="6">
                <v-card>
                    <v-card-text v-if="success">
-                       <p class="text-h2">Сообщение отправлено</p>
+                       <p class="text-h2 black--text">СООБЩЕНИЕ ОТПРАВЛЕНО</p>
+                       <v-img alt="Сообщение отправлено" src="../../assets/message.png"></v-img>
                    </v-card-text>
                </v-card>
                <v-card v-if="!success">

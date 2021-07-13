@@ -9,19 +9,25 @@
                </v-card>
                <v-card v-if="!success">
                    <v-card-text>
-                        <v-toolbar color="primary" dark flat>
+                        <v-toolbar color="primary" dark flat class="mb-3">
                             <v-toolbar-title>Написать сообщение</v-toolbar-title>
                         </v-toolbar>
                         <v-form>
-                            <v-text-field v-model="messageData.name" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-user" label="Ф.И.О." type="text" />
-                            <v-text-field v-model="messageData.address" :rules="[rules.required, rules.counter]" prepend-icon="far fa-building" label="Адрес регистрации" type="text" />
-                            <v-text-field v-model="messageData.email" :rules="[rules.required, rules.email]" prepend-icon="fas fa-at" label="Адрес электронной почты" type="text" />
-                            <v-text-field v-model="messageData.phone" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-phone" label="Контактный номер телефона" type="text" />
-                            <v-text-field v-model="messageData.subj" :rules="[rules.required, rules.counter]" prepend-icon="far fa-comment-dots" label="Тема обращения" type="text" />
-                            <v-textarea v-model="messageData.text" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-align-center" label="Текст обращения"></v-textarea>
-                            <v-file-input show-size truncate-length="50" v-model="messageData.file" label="Добавить файл" filled prepend-icon="far fa-file-alt"></v-file-input>
-                            <v-switch v-model="messageData.pers"><template v-slot:label><div>В соостветствии с <v-tooltip bottom><template v-slot:activator="{ on }"><a target="_blank" @click.stop v-on="on" href="http://pravo.gov.ru/proxy/ips/?docbody&nd=102108261">152-ФЗ</a></template>Откроется в новом окне</v-tooltip> даю согласие на обработку персональных данных, указанных в моем обращении.</div></template></v-switch>
-                            
+                            <v-text-field outlined dense v-model="messageData.name" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-user" label="Ф.И.О." type="text" />
+                            <v-text-field outlined dense v-model="messageData.address" :rules="[rules.required, rules.counter]" prepend-icon="far fa-building" label="Адрес регистрации (Область, город, улица, дом, квартира.)" type="text" />
+                            <v-text-field outlined dense v-model="messageData.email" :rules="[rules.required, rules.email]" prepend-icon="fas fa-at" label="Адрес электронной почты" type="text" />
+                            <v-text-field outlined dense v-model="messageData.phone" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-phone" label="Контактный номер телефона" type="text" />
+                            <v-text-field outlined dense v-model="messageData.subj" :rules="[rules.required, rules.counter]" prepend-icon="far fa-comment-dots" label="Тема обращения" type="text" />
+                            <v-textarea outlined dense v-model="messageData.text" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-align-center" label="Текст обращения"></v-textarea>
+                            <v-file-input outlined dense show-size truncate-length="50" v-model="messageData.file" label="Добавить файл" filled prepend-icon="far fa-file-alt"></v-file-input>
+                            <v-switch v-model="messageData.pers"><template v-slot:label><div>В соответствии с <v-tooltip bottom><template v-slot:activator="{ on }"><a target="_blank" @click.stop v-on="on" href="http://pravo.gov.ru/proxy/ips/?docbody&nd=102108261">152-ФЗ</a></template>Откроется в новом окне</v-tooltip> даю согласие на обработку моих персональных данных, указанных в обращении, с целью обработки обращения.</div></template></v-switch>
+                            <v-radio-group v-model="messageData.sendm">
+                                <template v-slot:label>
+                                    <div>Ответ на обращение направить:</div>
+                                </template>
+                                <v-radio off-icon='far fa-circle' on-icon='fas fa-circle' value='email'><template v-slot:label>Электронным письмом на адрес Email, указанный при обращении.</template></v-radio>
+                                <v-radio off-icon='far fa-circle' on-icon='fas fa-circle' value='letter'><template v-slot:label>Письмом на адрес регистрации, указанный при обращении.</template></v-radio>
+                            </v-radio-group>
                         </v-form>
                    </v-card-text>
                    <v-card-actions>
@@ -40,7 +46,7 @@ export default {
         return {
             rules: {
                 required: value => !!value || 'Обязательно',
-                counter: value => value.length >= 10 || 'Не менее 10 символов',
+                counter: value => value.length >= 5 || 'Не менее 5 символов',
                 email: value => {
                     const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                     return pattern.test(value) || 'Неверный формат'
@@ -55,6 +61,7 @@ export default {
                 text: '',
                 file: '',
                 pers: false,
+                sendm: 'email',
             },
             success: false,
             error: '',
@@ -70,6 +77,7 @@ export default {
             formData.append('phone', this.messageData.phone)
             formData.append('subj', this.messageData.subj)
             formData.append('text', this.messageData.text)
+            formData.append('sendm', this.messageData.sendm)
             axios({
                 method: "POST",
                 url: "https://usznozersk.ru/api/v1/feedback",

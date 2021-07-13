@@ -14,13 +14,13 @@
                             <v-toolbar-title>Написать сообщение</v-toolbar-title>
                         </v-toolbar>
                         <v-form>
-                            <v-text-field outlined dense v-model="messageData.name" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-user" label="Ф.И.О." type="text" />
-                            <v-text-field outlined dense v-model="messageData.address" :rules="[rules.required, rules.counter]" prepend-icon="far fa-building" label="Адрес регистрации (Область, город, улица, дом, квартира.)" type="text" />
-                            <v-text-field outlined dense v-model="messageData.email" :rules="[rules.required, rules.email]" prepend-icon="fas fa-at" label="Адрес электронной почты" type="text" />
-                            <v-text-field outlined dense v-model="messageData.phone" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-phone" label="Контактный номер телефона" type="text" />
-                            <v-text-field outlined dense v-model="messageData.subj" :rules="[rules.required, rules.counter]" prepend-icon="far fa-comment-dots" label="Тема обращения" type="text" />
-                            <v-textarea outlined dense v-model="messageData.text" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-align-center" label="Текст обращения"></v-textarea>
-                            <v-file-input outlined dense show-size truncate-length="50" v-model="messageData.file" label="Добавить файл" filled prepend-icon="far fa-file-alt"></v-file-input>
+                            <v-text-field @update:error="errors.name = $event" outlined dense v-model="messageData.name" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-user" label="Ф.И.О." type="text" />
+                            <v-text-field @update:error="errors.address = $event" outlined dense v-model="messageData.address" :rules="[rules.required, rules.counter]" prepend-icon="far fa-building" label="Адрес регистрации (Область, город, улица, дом, квартира.)" type="text" />
+                            <v-text-field @update:error="errors.email = $event" outlined dense v-model="messageData.email" :rules="[rules.required, rules.email]" prepend-icon="fas fa-at" label="Адрес электронной почты" type="text" />
+                            <v-text-field @update:error="errors.phone = $event" outlined dense v-model="messageData.phone" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-phone" label="Контактный номер телефона" type="text" />
+                            <v-text-field @update:error="errors.subj = $event" outlined dense v-model="messageData.subj" :rules="[rules.required, rules.counter]" prepend-icon="far fa-comment-dots" label="Тема обращения" type="text" />
+                            <v-textarea @update:error="errors.text = $event" outlined dense v-model="messageData.text" :rules="[rules.required, rules.counter]" prepend-icon="fas fa-align-center" label="Текст обращения"></v-textarea>
+                            <v-file-input @update:error="errors.file = $event" outlined dense show-size accept="image/*,.pdf,.doc,.docx,.odt,.xls,.xlsx,.ods,.txt,.rtf,.zip,.rar" :rules="[rules.fileSize]" truncate-length="50" v-model="messageData.file" label="Добавить файл" filled prepend-icon="far fa-file-alt"></v-file-input>
                             <v-switch v-model="messageData.pers"><template v-slot:label><div>В соответствии с <v-tooltip bottom><template v-slot:activator="{ on }"><a target="_blank" @click.stop v-on="on" href="http://pravo.gov.ru/proxy/ips/?docbody&nd=102108261">152-ФЗ</a></template>Откроется в новом окне</v-tooltip> даю согласие на обработку моих персональных данных, указанных в обращении, с целью обработки обращения.</div></template></v-switch>
                             <v-radio-group v-model="messageData.sendm">
                                 <template v-slot:label>
@@ -52,6 +52,7 @@ export default {
                     const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                     return pattern.test(value) || 'Неверный формат'
                 },
+                fileSize: value => !value || value.size < 52428800 || 'Не более 50 МБ',
             },
             messageData: {
                 name: '',
@@ -63,6 +64,15 @@ export default {
                 file: '',
                 pers: false,
                 sendm: 'email',
+            },
+            errors: {
+                name: true,
+                address: true,
+                email: true,
+                phone: true,
+                subj: true,
+                text: true,
+                file: false,
             },
             success: false,
             error: '',
@@ -94,7 +104,7 @@ export default {
     },
     computed: {
         addValid() {
-            return this.messageData.name != '' && this.messageData.address != '' && this.messageData.email != '' && this.messageData.phone != '' && this.messageData.subj != '' && this.messageData.text != '' && this.messageData.pers
+            return this.messageData.name != '' && !this.errors.name && this.messageData.address != '' && !this.errors.address && this.messageData.email != '' && !this.errors.email && this.messageData.phone != '' && !this.errors.phone && this.messageData.subj != '' && !this.errors.subj && this.messageData.text != '' && !this.errors.text && !this.errors.file && this.messageData.pers
         }
     }
 }

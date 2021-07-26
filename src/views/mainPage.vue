@@ -8,8 +8,11 @@
    </v-row>
   
   <v-row no-gutters justify="center">
-      <v-col cols="12" lg="10">
-        <v-card><v-img alt="75" src="../assets/baner.jpg" aspect-ratio="7"></v-img></v-card>
+      <v-col cols="6" lg="5">
+        <a href="http://minsoc74.ru/sites/default/files/broshyura_posobiya_minsoc_2021.pdf" target="blank"><v-card class="mr-1"><v-img alt="75" src="../assets/banner1-1.png" aspect-ratio="3"></v-img></v-card></a>
+      </v-col>
+        <v-col cols="6" lg="5">
+        <a href="https://usznozersk.ru/ask"><v-card class="ml-1"><v-img alt="75" src="../assets/banner1-2.png" aspect-ratio="3"></v-img></v-card></a>
       </v-col>
    <!--   <v-col cols="2">
         
